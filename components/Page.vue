@@ -16,3 +16,8 @@ export default {
   }
 }
 </script>
+
+<style lang="sass">
+.page
+  background: red
+</style>

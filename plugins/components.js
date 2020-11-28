@@ -2,20 +2,20 @@ import Vue from "vue"
 
 // PAGES
 import Page from "~/components/Page.vue"
-import PagePost from "~/components/PagePost.vue"
 
 // ITEMS
-import ItemContactForm from "~/components/ItemContactForm.vue"
-import ItemImages from "~/components/ItemImages.vue"
-import ItemText from "~/components/ItemText.vue"
-import ItemVideoplayer from "~/components/ItemVideoplayer.vue"
+// import ItemContactForm from "~/components/ItemContactForm.vue"
+import ItemVideoVimeo from "~/components/ItemVideoVimeo.vue"
+import ItemVideoYoutube from "~/components/ItemVideoYoutube.vue"
+// import ItemText from "~/components/ItemText.vue"
+// import ItemVideoplayer from "~/components/ItemVideoplayer.vue"
 
 // PAGES
 Vue.component("blok-page", Page)
-Vue.component("blok-page-post", PagePost)
 
 // ITEMS
-Vue.component("blok-item-contact-form", ItemContactForm)
-Vue.component("blok-item-images", ItemImages)
-Vue.component("blok-item-text", ItemText)
-Vue.component("blok-item-videoplayer", ItemVideoplayer)
+// Vue.component("blok-item-contact-form", ItemContactForm)
+Vue.component("blok-item-video-vimeo", ItemVideoVimeo)
+Vue.component("blok-item-video-youtube", ItemVideoYoutube)
+// Vue.component("blok-item-text", ItemText)
+// Vue.component("blok-item-videoplayer", ItemVideoplayer)

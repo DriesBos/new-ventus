@@ -1,5 +1,5 @@
 <template>
-  <div v-editable="story.content" class="page-Blog_Slug">
+  <div v-editable="story.content" class="page-Project_Slug">
     <component
       :is="blok.component | dashify"
       v-for="blok in story.content.body"
@@ -12,7 +12,7 @@
 <script>
 export default {
   asyncData(context) {
-    let endpoint = "cdn/stories/blog/" + context.params.slug
+    let endpoint = "cdn/stories/projects/" + context.params.slug
     return context.app.$storyapi
       .get(endpoint, {
         version: process.env.NODE_ENV == "production" ? "published" : "draft"
