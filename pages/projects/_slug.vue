@@ -6,6 +6,7 @@
       :key="blok._uid"
       :blok="blok"
     ></component>
+    <p>PROJECT PAGE</p>
   </div>
 </template>
 
