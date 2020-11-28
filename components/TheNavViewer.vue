@@ -14,9 +14,31 @@
         ></component>
       </li>
     </ul>
-    <div class="section-NavViewer_Prev" @click="clickPrevProject"></div>
-    <div class="section-NavViewer_Center" @click="clickCenterProject"></div>
-    <div class="section-NavViewer_Next" @click="clickNextProject"></div>
+    <div
+      v-if="this.$route.name === 'index'"
+      class="section-NavViewer_Prev"
+      @click="clickPrevProject"
+    ></div>
+    <div
+      v-if="this.$route.name === 'index'"
+      class="section-NavViewer_Center"
+      @click="clickCenterProject"
+    ></div>
+    <div
+      v-if="this.$route.name === 'index'"
+      class="section-NavViewer_Next"
+      @click="clickNextProject"
+    ></div>
+    <div
+      v-if="this.$route.name === 'projects-slug'"
+      class="section-NavViewer_SlugCenter"
+      @click="clickCenterProject"
+    ></div>
+    <div
+      v-if="this.$route.name === 'projects-slug'"
+      class="section-NavViewer_SlugNext"
+      @click="clickSlugNextProject"
+    ></div>
   </section>
 </template>
 
@@ -41,9 +63,7 @@ export default {
     }
   },
   mounted() {
-    // console.log(this.$route)
     this.resetList()
-    // console.log(this.list)
     this.initProjectNumbers()
     this.setAnimateStart()
   },
@@ -69,6 +89,17 @@ export default {
     clickNextProject() {
       this.animateNext()
       this.setNextProject()
+    },
+    clickSlugNextProject() {
+      console.log("SLUG NEXT")
+      this.animateSlugNext()
+      this.setNextProject()
+      var array = document.querySelectorAll(".project")
+      array.forEach(el => {
+        if (el.dataset.project === "2") {
+          this.$router.push("/projects/" + el.dataset.slug)
+        }
+      })
     },
     animateProjectOpen() {
       var width = window.innerWidth
@@ -240,6 +271,65 @@ export default {
         }
       })
     },
+    animateSlugNext() {
+      var width = window.innerWidth
+      var height = window.innerHeight
+      var array = document.querySelectorAll(".project")
+      array.forEach(el => {
+        if (el.dataset.project === "0") {
+          gsap.set(el, {
+            opacity: 1
+          })
+          gsap.to(el, {
+            ease: "Power4.easeInOut",
+            duration: 1.2,
+            left: 0,
+            top: height - (height - width * 0.3) / 2,
+            width: "20vw",
+            height: (height - width * 0.3) / 2
+          })
+        } else if (el.dataset.project === "1") {
+          gsap.to(el, {
+            ease: "Power4.easeInOut",
+            duration: 1.2,
+            left: "20vw",
+            top: 0,
+            width: "80vw",
+            height: height - (height - width * 0.3) / 2
+          })
+        } else if (el.dataset.project === "2") {
+          gsap.to(el, {
+            ease: "Power4.easeInOut",
+            duration: 1.2,
+            left: "100vw",
+            top: 0 - (height - width * 0.3) / 2,
+            width: "20vw",
+            height: (height - width * 0.3) / 2
+          })
+        } else if (el.dataset.project === "3") {
+          gsap.to(el, {
+            ease: "Power4.easeInOut",
+            duration: 1.2,
+            left: "100vw",
+            top: 0 - (height - width * 0.3) / 2,
+            width: "20vw",
+            height: (height - width * 0.3) / 2
+          })
+        } else if (el.dataset.project === "4") {
+          gsap.set(el, {
+            opacity: 0
+          })
+          gsap.to(el, {
+            ease: "Power4.easeInOut",
+            duration: 1.2,
+            left: "-20vw",
+            top: "100vh",
+            width: "20vw",
+            height: (height - width * 0.3) / 2
+          })
+        }
+      })
+    },
     setPrevProject() {
       var array = document.querySelectorAll(".project")
       array.forEach(el => {
@@ -368,6 +458,20 @@ export default {
       right: 0
       width: 20vw
       height: calc((100vh - 30vw)/2)
+      z-index: $video-prevnext
+    &_SlugNext
+      position: absolute
+      left: 0
+      bottom: 0
+      width: 20vw
+      height: calc((100vh - 30vw)/2)
+      z-index: $video-prevnext
+    &_SlugCenter
+      position: absolute
+      top: 0
+      left: 20vw
+      width: 80vw
+      height: calc(100vh - ((100vh - 30vw) / 2))
       z-index: $video-prevnext
 
 .project
