@@ -10,6 +10,7 @@ require("dotenv").config()
 // Add the "Lazy" prefix in your templates to enable lazyload components
 
 module.exports = {
+  target: "static",
   head: {
     title: "Inert Site Title", // Change in package.json files
     meta: [
