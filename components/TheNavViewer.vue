@@ -43,6 +43,7 @@
 </template>
 
 <script>
+import lodash from "lodash"
 import { mapState } from "vuex"
 import { gsap } from "gsap"
 export default {
@@ -66,6 +67,12 @@ export default {
     this.resetList()
     this.initProjectNumbers()
     this.setAnimateStart()
+    this.handleDebouncedResize = lodash.debounce(this.setAnimateStart, 50)
+    window.addEventListener("resize", this.handleDebouncedResize)
+    window.addEventListener("resize", console.log("RESIZING"))
+  },
+  destroyed() {
+    window.removeEventListener("resize", this.setAnimateStart)
   },
   methods: {
     clickPrevProject() {
