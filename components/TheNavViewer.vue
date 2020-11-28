@@ -17,7 +17,7 @@
     <div
       v-if="this.$route.name === 'index'"
       class="section-NavViewer_Prev"
-      @click="clickPrevProject"
+      @click="clickNextProject"
     ></div>
     <div
       v-if="this.$route.name === 'index'"
@@ -27,7 +27,7 @@
     <div
       v-if="this.$route.name === 'index'"
       class="section-NavViewer_Next"
-      @click="clickNextProject"
+      @click="clickPrevProject"
     ></div>
     <div
       v-if="this.$route.name === 'projects-slug'"
@@ -371,49 +371,93 @@ export default {
       }, 125)
     },
     setAnimateStart() {
-      setTimeout(function() {
-        var width = window.innerWidth
-        var height = window.innerHeight
-        var array = document.querySelectorAll(".project")
-        array.forEach(el => {
-          if (el.dataset.project === "0") {
-            gsap.set(el, {
-              left: "-20vw",
-              top: "100vh",
-              width: "20vw",
-              height: (height - width * 0.3) / 2
-            })
-          } else if (el.dataset.project === "1") {
-            gsap.set(el, {
-              left: 0,
-              top: height - (height - width * 0.3) / 2,
-              width: "20vw",
-              height: (height - width * 0.3) / 2
-            })
-          } else if (el.dataset.project === "2") {
-            gsap.set(el, {
-              left: "20vw",
-              top: (height - width * 0.3) / 2,
-              width: "60vw",
-              height: "30vw"
-            })
-          } else if (el.dataset.project === "3") {
-            gsap.set(el, {
-              left: "80vw",
-              top: 0,
-              width: "20vw",
-              height: (height - width * 0.3) / 2
-            })
-          } else if (el.dataset.project === "4") {
-            gsap.set(el, {
-              left: "100vw",
-              top: "-33.3333vh",
-              width: "20vw",
-              height: (height - width * 0.3) / 2
-            })
-          }
-        })
-      }, 250)
+      var width = window.innerWidth
+      var height = window.innerHeight
+      if (this.$route.name === "index") {
+        setTimeout(function() {
+          var array = document.querySelectorAll(".project")
+          array.forEach(el => {
+            if (el.dataset.project === "0") {
+              gsap.set(el, {
+                left: "-20vw",
+                top: "100vh",
+                width: "20vw",
+                height: (height - width * 0.3) / 2
+              })
+            } else if (el.dataset.project === "1") {
+              gsap.set(el, {
+                left: 0,
+                top: height - (height - width * 0.3) / 2,
+                width: "20vw",
+                height: (height - width * 0.3) / 2
+              })
+            } else if (el.dataset.project === "2") {
+              gsap.set(el, {
+                left: "20vw",
+                top: (height - width * 0.3) / 2,
+                width: "60vw",
+                height: "30vw"
+              })
+            } else if (el.dataset.project === "3") {
+              gsap.set(el, {
+                left: "80vw",
+                top: 0,
+                width: "20vw",
+                height: (height - width * 0.3) / 2
+              })
+            } else if (el.dataset.project === "4") {
+              gsap.set(el, {
+                left: "100vw",
+                top: "-33.3333vh",
+                width: "20vw",
+                height: (height - width * 0.3) / 2
+              })
+            }
+          })
+        }, 250)
+      } else {
+        setTimeout(function() {
+          var array = document.querySelectorAll(".project")
+          array.forEach(el => {
+            if (el.dataset.project === "0") {
+              gsap.set(el, {
+                left: "-20vw",
+                top: "100vh",
+                width: "20vw",
+                height: (height - width * 0.3) / 2
+              })
+            } else if (el.dataset.project === "1") {
+              gsap.set(el, {
+                left: 0,
+                top: height - (height - width * 0.3) / 2,
+                width: "20vw",
+                height: (height - width * 0.3) / 2
+              })
+            } else if (el.dataset.project === "2") {
+              gsap.set(el, {
+                left: "20vw",
+                top: 0,
+                width: "80vw",
+                height: height - (height - width * 0.3) / 2
+              })
+            } else if (el.dataset.project === "3") {
+              gsap.set(el, {
+                left: "100vw",
+                top: 0 - (height - width * 0.3) / 2,
+                width: "20vw",
+                height: (height - width * 0.3) / 2
+              })
+            } else if (el.dataset.project === "4") {
+              gsap.set(el, {
+                left: "100vw",
+                top: "-33.3333vh",
+                width: "20vw",
+                height: (height - width * 0.3) / 2
+              })
+            }
+          })
+        }, 250)
+      }
     },
     resetList() {
       this.list = [...this.projects]
