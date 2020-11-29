@@ -40,5 +40,7 @@ export default {
 <style lang="sass">
 .markdown p
   white-space: pre-line
+  &:last-child
+    margin-bottom: 0
 // Prefer style handling by cascading css (typography.sass) as much as possible.
 </style>

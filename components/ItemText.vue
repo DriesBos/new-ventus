@@ -18,6 +18,8 @@ export default {
 
 <style lang="sass">
 .item-Text
+  margin-top: 1rem
+  margin-bottom: 1rem
   &_Container
     &.small
       .item-Text_Single

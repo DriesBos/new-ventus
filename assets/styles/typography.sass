@@ -18,11 +18,11 @@
 
 // https://www.madebymike.com.au/writing/fluid-type-calc-examples/
 html
-  font-size: 16px
+  font-size: 18px
 
 @media screen and (min-width: 800px)
   html
-    font-size: calc(16px + 6 * ((100vw - 800px) / 1200))
+    font-size: calc(18px + 4 * ((100vw - 800px) / 1200))
 
 @media screen and (min-width: 2000px)
   html
@@ -52,16 +52,22 @@ li, h1, h2, h3, h4, h5, blockquote, p, a, a:link, a:visited, a:hover, a:active, 
 .markdown
   p
     font-size: $type-size-p
+    line-height: $lineheight-p
   h1
     font-size: $type-size-h1
+    line-height: $lineheight-h
   h2
-    font-size: $type-size-h2
+    font-size: $type-size-h1
+    line-height: $lineheight-h
   h3
-    font-size: $type-size-h3
+    font-size: $type-size-h2
+    line-height: $lineheight-h
   h4
-    font-size: $type-size-h4
+    font-size: $type-size-h3
+    line-height: $lineheight-h
   h5
-    font-size: $type-size-h5
+    font-size: $type-size-h4
+    line-height: $lineheight-h
   a
     color: $color
     text-decoration: underline
@@ -70,11 +76,11 @@ li, h1, h2, h3, h4, h5, blockquote, p, a, a:link, a:visited, a:hover, a:active, 
   em
     font-style: italic
   blockquote, blockquote p
-    font-size: $type-size-blockquote
-  p, h1, h2, h3, h4, h5, blockquote
-    margin-bottom: $lineheight
+    font-size: $type-size-h2
+  // p, h1, h2, h3, h4, h5, blockquote
+  //   margin-bottom: $lineheight
   p
-    min-height: $lineheight
+    min-height: $lineheight-p
 
 .ellipsis // Limit title to one line
   overflow: hidden
