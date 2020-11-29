@@ -47,7 +47,7 @@ export default {
     }
   },
   mounted() {
-    console.log(this.story.content)
+    // console.log(this.story.content)
   }
 }
 </script>

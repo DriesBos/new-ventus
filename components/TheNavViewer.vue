@@ -98,7 +98,7 @@ export default {
       this.setNextProject()
     },
     clickSlugNextProject() {
-      console.log("SLUG NEXT")
+      // console.log("SLUG NEXT")
       this.animateSlugNext()
       this.setNextProject()
       var array = document.querySelectorAll(".project")

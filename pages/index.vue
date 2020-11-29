@@ -6,7 +6,6 @@
       :key="story.content._uid"
       :blok="story.content"
     ></component>
-    <p>HOME PAGE</p>
   </div>
 </template>
 
