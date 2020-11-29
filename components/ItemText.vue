@@ -15,3 +15,18 @@ export default {
   }
 }
 </script>
+
+<style lang="sass">
+.item-Text
+  &_Container
+    &.small
+      .item-Text_Single
+        padding-right: 1em
+    &.large
+      .item-Text_Single
+        padding-right: 1em
+    &.full
+      .item-Text_Single
+        padding-left: 1em
+        padding-right: 1em
+</style>
