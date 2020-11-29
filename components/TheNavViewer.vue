@@ -485,6 +485,7 @@ export default {
     position: relative
     width: 100%
     height: 100vh
+    overflow: hidden
     &_VideoContainer
       position: relative
       width: 100%

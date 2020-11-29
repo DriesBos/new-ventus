@@ -6,7 +6,6 @@
       :key="blok._uid"
       :blok="blok"
     ></component>
-    <p>PROJECT PAGE</p>
   </div>
 </template>
 
@@ -46,6 +45,9 @@ export default {
     return {
       title: this.story.name + " — SITE TITLE"
     }
+  },
+  mounted() {
+    console.log(this.story.content)
   }
 }
 </script>
