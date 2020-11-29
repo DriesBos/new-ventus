@@ -18,15 +18,15 @@
 
 // https://www.madebymike.com.au/writing/fluid-type-calc-examples/
 html
-  font-size: 18px
+  font-size: 14px
 
 @media screen and (min-width: 800px)
   html
-    font-size: calc(18px + 4 * ((100vw - 800px) / 1200))
+    font-size: calc(14px + 4 * ((100vw - 800px) / 1200))
 
 @media screen and (min-width: 2000px)
   html
-    font-size: 22px
+    font-size: 18px
 
 h1, h2, h3, p, a
   word-wrap: break-word
@@ -68,8 +68,8 @@ li, h1, h2, h3, h4, h5, blockquote, p, a, a:link, a:visited, a:hover, a:active, 
     font-size: $type-size-h3
     line-height: $lineheight-h
   h5
-    font-size: $type-size-h4
-    line-height: $lineheight-h
+    font-size: $type-size-p
+    line-height: $lineheight-p
   a
     color: $color
     text-decoration: underline
