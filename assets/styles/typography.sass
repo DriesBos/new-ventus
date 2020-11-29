@@ -1,8 +1,8 @@
-// @font-face
-//   font-family: ''
-//   src: url('~assets/fonts/') format('')
-//   font-weight: normal
-//   font-style: normal
+@font-face
+  font-family: 'GT America Regular'
+  src: url('~assets/fonts/GTAmerica-Regular.woff') format('')
+  font-weight: normal
+  font-style: normal
 
 // @font-face
 //   font-family: ''
@@ -10,11 +10,11 @@
 //   font-weight: normal
 //   font-style: italic
 
-// @font-face
-//   font-family: ''
-//   src: url('~assets/fonts/') format('')
-//   font-weight: bold
-//   font-style: normal
+@font-face
+  font-family: 'GT America Regular'
+  src: url('~assets/fonts/GTAmerica-Bold.woff') format('woff')
+  font-weight: bold
+  font-style: normal
 
 // https://www.madebymike.com.au/writing/fluid-type-calc-examples/
 html
@@ -41,7 +41,7 @@ h1, h2, h3, p, a
   hyphens: none
 
 li, h1, h2, h3, h4, h5, blockquote, p, a, a:link, a:visited, a:hover, a:active, span, input, button
-  font-family: Helvetica, Arial, sans-serif
+  font-family: 'GT America Regular', sans-serif
   line-height: 1.5
   color: $color
   font-style: normal
@@ -58,15 +58,23 @@ li, h1, h2, h3, h4, h5, blockquote, p, a, a:link, a:visited, a:hover, a:active, 
   h1
     font-size: $type-size-h1
     line-height: $lineheight-h
+    letter-spacing: $letterspacing-h
+    font-weight: 500
   h2
     font-size: $type-size-h1
     line-height: $lineheight-h
+    letter-spacing: $letterspacing-h
+    font-weight: 500
   h3
     font-size: $type-size-h2
     line-height: $lineheight-h
+    letter-spacing: $letterspacing-h
+    font-weight: 500
   h4
     font-size: $type-size-h3
     line-height: $lineheight-h
+    letter-spacing: $letterspacing-h
+    font-weight: 500
   h5
     font-size: $type-size-p
     line-height: $lineheight-p
