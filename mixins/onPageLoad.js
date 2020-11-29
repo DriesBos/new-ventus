@@ -4,13 +4,34 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 gsap.registerPlugin(ScrollTrigger)
 
 export default {
+  data() {
+    return {
+      backgroundColor: 0
+    }
+  },
+  watch: {
+    $route() {
+      this.changeBackground()
+    }
+  },
   mounted() {
+    this.changeBackground()
     // this.rotateElement()
     // this.scrollSlow()
     // this.scrollFast()
     // this.scrollHorizontal()
   },
   methods: {
+    changeBackground() {
+      if (this.$route.name === "index") {
+        document.body.style.backgroundColor = "white"
+      } else if (
+        this.$route.name == "projects" ||
+        this.$route.name == "projects-slug"
+      ) {
+        document.body.style.backgroundColor = "lightgrey"
+      }
+    },
     scrollSlow() {
       setTimeout(function() {
         var targets = document.querySelectorAll(".scrollSlow")

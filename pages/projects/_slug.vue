@@ -10,7 +10,10 @@
 </template>
 
 <script>
+import onPageLoad from "@/mixins/onPageLoad"
+
 export default {
+  mixins: [onPageLoad],
   asyncData(context) {
     let endpoint = "cdn/stories/projects/" + context.params.slug
     return context.app.$storyapi
