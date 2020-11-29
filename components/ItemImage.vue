@@ -1,7 +1,7 @@
 <template>
   <div v-editable="blok" class="item item-Image">
-    <div class="item-Image_Container" :class="blok.size">
-      <div class="item-Image_Single">
+    <div class="item-Image_Container item-Container" :class="blok.size">
+      <div class="item-Image_Single item-Single">
         <img
           v-lazy="`${transformImage(blok.image.filename, '1440x0')}`"
           :data-srcset="
@@ -25,7 +25,7 @@ export default {
     blok: Object
   },
   mounted() {
-    console.log("BLOK IMAGE ITEM", this.blok)
+    // console.log("BLOK IMAGE ITEM", this.blok)
   },
   methods: {
     transformImage(image, option) {
@@ -44,22 +44,6 @@ export default {
 .item
   &-Image
     width: 100%
-    &_Container
-      display: flex
-      justify-content: flex-end
-      &.small
-        justify-content: flex-end
-        .item-Image_Single
-          width: 20vw
-      &.medium
-        justify-content: center
-        .item-Image_Single
-          width: 60vw
-        align-self: center
-      &.large
-        justify-content: flex-end
-        .item-Image_Single
-          width: 80vw
     img
       width: 100%
       max-width: 100%
