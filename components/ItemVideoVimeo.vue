@@ -34,15 +34,4 @@ export default {
     left: 50%
     object-fit: fill
     transform: translate(-50%, -50%)
-
-    // @media (min-aspect-ratio: 16/9)
-    //   border: 1px solid red
-    //   width: 100%
-    // @media (max-aspect-ratio: 16/9)
-    //   border: blue 1px solid
-    //     height: 56.25vw
-    // // width: 100%
-    // // height: 100%
-    // // max-width: 100%
-    // // max-height: 100%
 </style>
