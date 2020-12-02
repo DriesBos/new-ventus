@@ -6,6 +6,7 @@
         :key="i"
         :data-slug="item.slug"
         class="project"
+        :data-page="$route.name"
       >
         <component
           :is="item.content.video[0].component | dashify"
@@ -608,12 +609,21 @@ export default {
   iframe
     @media (max-aspect-ratio: 16/9)
       height: calc((100vh - 30vw)/2)
-      width: 100vw
+      width: 200vw
     @media (min-aspect-ratio: 16/9)
-      height: 100vh
+      height: 200vh
       width: 20vw
   &[data-project='2']
     iframe
       width: 60vw
-      height: 100vh
+      height: 200vh
+    &[data-page='projects-slug']
+      @media (max-aspect-ratio: 16/9)
+        iframe
+          width: 200vw
+          height: calc(100vh - ((100vh - 30vw) / 2))
+      @media (min-aspect-ratio: 16/9)
+        iframe
+          width: 80vw
+          height: 200vh
 </style>
