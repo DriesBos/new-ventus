@@ -40,6 +40,9 @@ export default {
         p, h1, h2, h3, h4, h5
           font-size: $type-size-data
           line-height: $lineheight-data
+        a
+          text-decoration: none
+          border-bottom: 1px solid black
       &:first-of-type
         border-top: 1px solid black
       &:last-of-type
