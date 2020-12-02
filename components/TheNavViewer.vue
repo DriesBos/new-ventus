@@ -15,29 +15,19 @@
       </li>
     </ul>
     <div
-      v-if="this.$route.name === 'index'"
-      class="section-NavViewer_Prev"
+      class="section-NavViewer_Nav section-NavViewer_Next"
+      :data-page="$route.name"
       @click="clickNextProject"
     ></div>
     <div
-      v-if="this.$route.name === 'index'"
-      class="section-NavViewer_Center"
+      class="section-NavViewer_Nav section-NavViewer_Center"
+      :data-page="$route.name"
       @click="clickCenterProject"
     ></div>
     <div
-      v-if="this.$route.name === 'index'"
-      class="section-NavViewer_Next"
+      class="section-NavViewer_Nav section-NavViewer_Prev"
+      :data-page="$route.name"
       @click="clickPrevProject"
-    ></div>
-    <div
-      v-if="this.$route.name === 'projects-slug'"
-      class="section-NavViewer_SlugCenter"
-      @click="clickCenterProject"
-    ></div>
-    <div
-      v-if="this.$route.name === 'projects-slug'"
-      class="section-NavViewer_SlugNext"
-      @click="clickSlugNextProject"
     ></div>
   </section>
 </template>
@@ -72,15 +62,35 @@ export default {
     this.handleDebouncedResize = lodash.debounce(this.setAnimateStart, 50)
     window.addEventListener("resize", this.handleDebouncedResize)
     // KEYBINDINGS
-    document.addEventListener("keydown", this.backOnEscape)
+    document.addEventListener("keydown", this.keyBindings)
   },
   destroyed() {
     window.removeEventListener("resize", this.setAnimateStart)
   },
   methods: {
+    keyBindings(event) {
+      if (event.keyCode === 27 || event.keyCode === 32) {
+        this.clickCenterProject()
+      } else if (event.keyCode === 39) {
+        this.clickNextProject()
+      } else if (event.keyCode === 37) {
+        this.clickPrevProject()
+      }
+    },
     clickPrevProject() {
-      this.animatePrev()
-      this.setPrevProject()
+      if (this.$route.name === "index") {
+        this.animatePrev()
+        this.setPrevProject()
+      } else {
+        this.animateSlugPrev()
+        this.setPrevProject()
+        var array = document.querySelectorAll(".project")
+        array.forEach(el => {
+          if (el.dataset.project === "2") {
+            this.$router.push("/projects/" + el.dataset.slug)
+          }
+        })
+      }
     },
     clickCenterProject() {
       var array = document.querySelectorAll(".project")
@@ -97,19 +107,19 @@ export default {
       }
     },
     clickNextProject() {
-      this.animateNext()
-      this.setNextProject()
-    },
-    clickSlugNextProject() {
-      // console.log("SLUG NEXT")
-      this.animateSlugNext()
-      this.setNextProject()
-      var array = document.querySelectorAll(".project")
-      array.forEach(el => {
-        if (el.dataset.project === "2") {
-          this.$router.push("/projects/" + el.dataset.slug)
-        }
-      })
+      if (this.$route.name === "index") {
+        this.animateNext()
+        this.setNextProject()
+      } else {
+        this.animateSlugNext()
+        this.setNextProject()
+        var array = document.querySelectorAll(".project")
+        array.forEach(el => {
+          if (el.dataset.project === "2") {
+            this.$router.push("/projects/" + el.dataset.slug)
+          }
+        })
+      }
     },
     animateProjectOpen() {
       var width = window.innerWidth
@@ -340,6 +350,74 @@ export default {
         }
       })
     },
+    animateSlugPrev() {
+      var width = window.innerWidth
+      var height = window.innerHeight
+      var array = document.querySelectorAll(".project")
+      array.forEach(el => {
+        if (el.dataset.project === "0") {
+          gsap.set(el, {
+            opacity: 0
+          })
+          gsap.to(el, {
+            ease: "Power4.easeInOut",
+            duration: 1.2,
+            left: "100vw",
+            top: 0 - (height - width * 0.3) / 2,
+            width: "20vw",
+            height: (height - width * 0.3) / 2
+          })
+        } else if (el.dataset.project === "1") {
+          gsap.set(el, {
+            opacity: 1
+          })
+          gsap.to(el, {
+            ease: "Power4.easeInOut",
+            duration: 1.2,
+            left: "-20vw",
+            top: "100vh",
+            width: "20vw",
+            height: (height - width * 0.3) / 2
+          })
+        } else if (el.dataset.project === "2") {
+          gsap.set(el, {
+            opacity: 1
+          })
+          gsap.to(el, {
+            ease: "Power4.easeInOut",
+            duration: 1.2,
+            left: 0,
+            top: height - (height - width * 0.3) / 2,
+            width: "20vw",
+            height: (height - width * 0.3) / 2
+          })
+        } else if (el.dataset.project === "3") {
+          gsap.set(el, {
+            opacity: 1
+          })
+          gsap.to(el, {
+            ease: "Power4.easeInOut",
+            duration: 1.2,
+            left: "20vw",
+            top: 0,
+            width: "80vw",
+            height: height - (height - width * 0.3) / 2
+          })
+        } else if (el.dataset.project === "4") {
+          gsap.set(el, {
+            opacity: 0
+          })
+          gsap.to(el, {
+            ease: "Power4.easeInOut",
+            duration: 1.2,
+            left: "100vw",
+            top: 0 - (height - width * 0.3) / 2,
+            width: "20vw",
+            height: (height - width * 0.3) / 2
+          })
+        }
+      })
+    },
     setPrevProject() {
       var array = document.querySelectorAll(".project")
       array.forEach(el => {
@@ -494,41 +572,32 @@ export default {
       position: relative
       width: 100%
       height: 100%
-    &_Prev
+    &_Nav
       position: absolute
+      z-index: $video-prevnext
+    &_Next
       left: 0
       bottom: 0
       width: 20vw
       height: calc((100vh - 30vw)/2)
-      z-index: $video-prevnext
     &_Center
-      position: absolute
       top: calc((100vh - 30vw)/2)
       left: 20vw
       width: 60vw
       height: 30vw
-      z-index: $video-prevnext
-    &_Next
-      position: absolute
+      &[data-page="projects-slug"]
+        top: 0
+        left: 20vw
+        width: 80vw
+        height: calc(100vh - ((100vh - 30vw) / 2))
+    &_Prev
       top: 0
       right: 0
       width: 20vw
       height: calc((100vh - 30vw)/2)
-      z-index: $video-prevnext
-    &_SlugNext
-      position: absolute
-      left: 0
-      bottom: 0
-      width: 20vw
-      height: calc((100vh - 30vw)/2)
-      z-index: $video-prevnext
-    &_SlugCenter
-      position: absolute
-      top: 0
-      left: 20vw
-      width: 80vw
-      height: calc(100vh - ((100vh - 30vw) / 2))
-      z-index: $video-prevnext
+      &[data-page="projects-slug"]
+        width: 0
+        height: 0
 
 .project
   position: absolute
