@@ -64,11 +64,15 @@ export default {
     }
   },
   mounted() {
+    // INIT
     this.resetList()
     this.initProjectNumbers()
     this.setAnimateStart()
+    // INIT ON RESIZE
     this.handleDebouncedResize = lodash.debounce(this.setAnimateStart, 50)
     window.addEventListener("resize", this.handleDebouncedResize)
+    // KEYBINDINGS
+    document.addEventListener("keydown", this.backOnEscape)
   },
   destroyed() {
     window.removeEventListener("resize", this.setAnimateStart)
@@ -485,6 +489,7 @@ export default {
     width: 100%
     height: 100vh
     overflow: hidden
+    border-bottom: 2px solid black
     &_VideoContainer
       position: relative
       width: 100%
@@ -531,4 +536,15 @@ export default {
   height: 33.3333vh
   cursor: pointer
   overflow: hidden
+  iframe
+    @media (max-aspect-ratio: 16/9)
+      height: calc((100vh - 30vw)/2)
+      width: 100vw
+    @media (min-aspect-ratio: 16/9)
+      height: 100vh
+      width: 20vw
+  &[data-project='2']
+    iframe
+      width: 60vw
+      height: 100vh
 </style>
