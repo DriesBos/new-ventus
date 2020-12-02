@@ -154,6 +154,9 @@ export default {
       var array = document.querySelectorAll(".project")
       array.forEach(el => {
         if (el.dataset.project === "2") {
+          gsap.set(el, {
+            opacity: 1
+          })
           gsap.to(el, {
             ease: "Power4.easeInOut",
             duration: 1.2,
@@ -163,6 +166,9 @@ export default {
             height: "30vw"
           })
         } else if (el.dataset.project === "3") {
+          gsap.set(el, {
+            opacity: 1
+          })
           gsap.to(el, {
             ease: "Power4.easeInOut",
             duration: 1.2,
