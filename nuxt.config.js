@@ -12,7 +12,7 @@ require("dotenv").config()
 module.exports = {
   target: "static",
   head: {
-    title: "Inert Site Title", // Change in package.json files
+    title: "NEW VENTUS", // Change in package.json files
     meta: [
       { charset: "utf-8" },
       {
@@ -22,7 +22,8 @@ module.exports = {
       {
         hid: "description",
         name: "description",
-        content: "Insert Site Descr" // Change in package.json files
+        content:
+          "New Ventus is here to shake up conventional filmmaking. We believe in agile filmmaking without setting boundaries when aiming for perfection. With style, fresh views and endless passion we aim to transform the unwieldy film industry by telling stories that matter, without unnecessary chitchat." // Change in package.json files
       },
       {
         name: "mobile-web-app-capable",

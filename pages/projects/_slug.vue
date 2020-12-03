@@ -46,7 +46,7 @@ export default {
   },
   head() {
     return {
-      title: this.story.name + " — SITE TITLE"
+      title: this.story.name + " — NEW VENTUS"
     }
   },
   mounted() {
