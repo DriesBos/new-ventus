@@ -22,11 +22,11 @@
       :data-fullscreen="fullscreen"
       class="section-NavViewer_Nav section-NavViewer_Prev"
     >
-      <transition name="navControls">
-        <div v-if="!fullscreen" class="controls-Row">
-          <p @click="clickNextProject">previous</p>
-        </div>
-      </transition>
+      <div class="controls-Row">
+        <transition name="navControls">
+          <p v-if="!fullscreen" @click="clickNextProject">previous</p>
+        </transition>
+      </div>
     </div>
     <!-- CENTER -->
     <div
@@ -70,7 +70,9 @@
       class="section-NavViewer_Nav section-NavViewer_Next"
     >
       <div class="controls-Row">
-        <p @click="clickPrevProject">next</p>
+        <transition name="navControls">
+          <p v-if="$route.name === 'index'" @click="clickPrevProject">next</p>
+        </transition>
       </div>
     </div>
   </section>
