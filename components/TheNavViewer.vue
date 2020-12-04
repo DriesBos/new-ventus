@@ -15,36 +15,48 @@
         ></component>
       </li>
     </ul>
+    <!-- PREVIOUS -->
     <div
-      class="section-NavViewer_Nav section-NavViewer_Next"
+      class="section-NavViewer_Nav section-NavViewer_Prev"
       :data-page="$route.name"
+      :data-fullscreen="fullscreen"
     >
       <div class="controls-Row">
         <p @click="clickNextProject">previous</p>
       </div>
     </div>
+    <!-- CENTER -->
     <div
       class="section-NavViewer_Nav section-NavViewer_Center"
       :data-page="$route.name"
+      :data-fullscreen="fullscreen"
     >
       <div class="controls-Row">
         <p v-if="$route.name === 'index'" @click="clickCenterProject">
           view project
         </p>
-        <p v-if="$route.name === 'projects-slug'" @click="toggleFullscreen">
+        <p
+          v-if="$route.name === 'projects-slug' && !fullscreen"
+          @click="toggleFullscreen"
+        >
           fullscreen
         </p>
-        <p v-if="$route.name === 'projects-slug'" @click="clickCenterProject">
+        <p
+          v-if="$route.name === 'projects-slug' && !fullscreen"
+          @click="clickCenterProject"
+        >
           close
         </p>
-        <p v-if="$route.name === 'fullscreen'" @click="toggleFullscreen">
+        <p v-if="fullscreen" @click="toggleFullscreen">
           close
         </p>
       </div>
     </div>
+    <!-- NEXT -->
     <div
-      class="section-NavViewer_Nav section-NavViewer_Prev"
+      class="section-NavViewer_Nav section-NavViewer_Next"
       :data-page="$route.name"
+      :data-fullscreen="fullscreen"
     >
       <div class="controls-Row">
         <p @click="clickPrevProject">next</p>
@@ -61,7 +73,8 @@ export default {
   data() {
     return {
       direction: null,
-      list: {}
+      list: {},
+      fullscreen: false
     }
   },
   computed: {
@@ -89,6 +102,12 @@ export default {
     window.removeEventListener("resize", this.setAnimateStart)
   },
   methods: {
+    toggleFullscreen() {
+      console.log("TOGGLE FULLSCREEN")
+      this.fullscreen = !this.fullscreen
+      console.log(this.fullscreen)
+      this.animateProjectFullscreen()
+    },
     keyBindings(event) {
       if (event.keyCode === 27 || event.keyCode === 32) {
         this.clickCenterProject()
@@ -141,6 +160,51 @@ export default {
           }
         })
       }
+    },
+    animateProjectFullscreen() {
+      var width = window.innerWidth
+      var height = window.innerHeight
+      var array = document.querySelectorAll(".project")
+      array.forEach(el => {
+        if (el.dataset.project === "2" && this.fullscreen) {
+          gsap.to(el, {
+            ease: "Power4.easeInOut",
+            duration: 1.2,
+            left: 0,
+            top: 0,
+            width: "100vw",
+            height: "100vh"
+          })
+        } else if (el.dataset.project === "2" && !this.fullscreen) {
+          gsap.to(el, {
+            ease: "Power4.easeInOut",
+            duration: 1.2,
+            left: "20vw",
+            top: 0,
+            width: "80vw",
+            height: height - (height - width * 0.3) / 2
+          })
+        }
+        if (el.dataset.project === "1" && this.fullscreen) {
+          gsap.to(el, {
+            ease: "Power4.easeInOut",
+            duration: 1.2,
+            left: "-20vw",
+            top: "100vh",
+            width: "20vw",
+            height: (height - width * 0.3) / 2
+          })
+        } else if (el.dataset.project === "1" && !this.fullscreen) {
+          gsap.to(el, {
+            ease: "Power4.easeInOut",
+            duration: 1.2,
+            left: 0,
+            top: height - (height - width * 0.3) / 2,
+            width: "20vw",
+            height: (height - width * 0.3) / 2
+          })
+        }
+      })
     },
     animateProjectOpen() {
       var width = window.innerWidth
@@ -601,6 +665,7 @@ export default {
     &_Nav
       position: absolute
       z-index: $video-prevnext
+      // border: 2px solid purple
       p
         padding: 1rem
         color: white
@@ -611,12 +676,13 @@ export default {
         display: flex
         left: 0
         bottom: 0
-
-    &_Next
+    &_Prev
       left: 0
       bottom: 0
       width: 20vw
       height: calc((100vh - 30vw)/2)
+      &[data-fullscreen="true"]
+        display: none
     &_Center
       top: calc((100vh - 30vw)/2)
       left: 20vw
@@ -627,14 +693,18 @@ export default {
         left: 20vw
         width: 80vw
         height: calc(100vh - ((100vh - 30vw) / 2))
-    &_Prev
+      &[data-page="projects-slug"][data-fullscreen="true"]
+        top: 0
+        left: 0
+        width: 100vw
+        height: 100vh
+    &_Next
       top: 0
       right: 0
       width: 20vw
       height: calc((100vh - 30vw)/2)
       &[data-page="projects-slug"]
-        width: 0
-        height: 0
+        display: none
 
 .project
   position: absolute

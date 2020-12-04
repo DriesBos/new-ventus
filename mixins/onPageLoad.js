@@ -12,6 +12,7 @@ export default {
   watch: {
     $route() {
       this.changeBackground()
+      console.log(this.$route)
     }
   },
   mounted() {
