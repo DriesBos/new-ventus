@@ -25,7 +25,7 @@ export default {
   methods: {
     changeBackground() {
       if (this.$route.name === "index") {
-        document.body.style.backgroundColor = "white"
+        document.body.style.backgroundColor = "lightgrey"
       } else if (
         this.$route.name == "projects" ||
         this.$route.name == "projects-slug"

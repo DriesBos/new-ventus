@@ -681,11 +681,14 @@ export default {
       left: 0
       font-size: 4rem
       z-index: $titles
-      // color: white
+      color: white
+      padding-top: 1rem
       padding-left: 1rem
       h1
         color: rgba(0,0,0,0)
-        -webkit-text-stroke: 2px black
+        -webkit-text-stroke: 2px white
+        text-transform: uppercase
+        line-height: 1.25
     &_VideoContainer
       position: relative
       width: 100%

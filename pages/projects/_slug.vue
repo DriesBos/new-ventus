@@ -61,14 +61,17 @@ export default {
 <style lang="sass">
 .slug
   &-Title
+    position: absolute
+    top: 0
+    left: 0
     font-size: 4rem
     z-index: $titles
-    // color: white
-    padding-left: calc(20vw + 2.5rem)
+    color: white
+    padding-top: 1rem
+    padding-left: 1rem
     h1
-      transform: translateY(-2.5rem)
       color: rgba(0,0,0,0)
-      -webkit-text-stroke: 2px black
+      -webkit-text-stroke: 2px white
       text-transform: uppercase
       line-height: 1.25
 </style>
