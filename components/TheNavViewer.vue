@@ -5,8 +5,9 @@
         v-for="(item, i) in list"
         :key="i"
         :data-slug="item.slug"
-        class="project"
         :data-page="$route.name"
+        :data-fullscreen="fullscreen"
+        class="project"
       >
         <component
           :is="item.content.video[0].component | dashify"
@@ -17,9 +18,9 @@
     </ul>
     <!-- PREVIOUS -->
     <div
-      class="section-NavViewer_Nav section-NavViewer_Prev"
       :data-page="$route.name"
       :data-fullscreen="fullscreen"
+      class="section-NavViewer_Nav section-NavViewer_Prev"
     >
       <div class="controls-Row">
         <p @click="clickNextProject">previous</p>
@@ -27,9 +28,9 @@
     </div>
     <!-- CENTER -->
     <div
-      class="section-NavViewer_Nav section-NavViewer_Center"
       :data-page="$route.name"
       :data-fullscreen="fullscreen"
+      class="section-NavViewer_Nav section-NavViewer_Center"
     >
       <div class="controls-Row">
         <p v-if="$route.name === 'index'" @click="clickCenterProject">
@@ -54,9 +55,9 @@
     </div>
     <!-- NEXT -->
     <div
-      class="section-NavViewer_Nav section-NavViewer_Next"
       :data-page="$route.name"
       :data-fullscreen="fullscreen"
+      class="section-NavViewer_Nav section-NavViewer_Next"
     >
       <div class="controls-Row">
         <p @click="clickPrevProject">next</p>
@@ -731,5 +732,14 @@ export default {
       @media (min-aspect-ratio: 16/9)
         iframe
           width: 80vw
+          height: 200vh
+    &[data-fullscreen='true']
+      @media (max-aspect-ratio: 16/9)
+        iframe
+          width: 200vw
+          height: 100vh
+      @media (min-aspect-ratio: 16/9)
+        iframe
+          width: 100vw
           height: 200vh
 </style>

@@ -1,6 +1,6 @@
 <template>
   <!-- prettier-ignore -->
-  <div class="player-Container">
+  <div class="player-Container" :data-ratio="blok.aspect_ratio">
     <iframe
       :src="'https://player.vimeo.com/video/' + blok.video_id + '?loop=1&autoplay=1&autopause=0&muted=1'"
       frameborder="0"
@@ -18,7 +18,7 @@ export default {
     blok: Object
   },
   mounted() {
-    // console.log("VIDEO ITEM VIMEO", this.blok)
+    console.log("VIDEO ITEM VIMEO", this.blok)
   }
 }
 </script>
