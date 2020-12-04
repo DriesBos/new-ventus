@@ -104,9 +104,7 @@ export default {
   },
   methods: {
     toggleFullscreen() {
-      console.log("TOGGLE FULLSCREEN")
       this.fullscreen = !this.fullscreen
-      console.log(this.fullscreen)
       this.animateProjectFullscreen()
     },
     keyBindings(event) {
@@ -715,31 +713,9 @@ export default {
   overflow: hidden
   iframe
     @media (max-aspect-ratio: 16/9)
-      height: calc((100vh - 30vw)/2)
-      width: 200vw
+      height: 100%
+      width: 1000%
     @media (min-aspect-ratio: 16/9)
-      height: 200vh
-      width: 20vw
-  &[data-project='2']
-    iframe
-      width: 60vw
-      height: 200vh
-    &[data-page='projects-slug']
-      @media (max-aspect-ratio: 16/9)
-        iframe
-          width: 200vw
-          height: calc(100vh - ((100vh - 30vw) / 2))
-      @media (min-aspect-ratio: 16/9)
-        iframe
-          width: 80vw
-          height: 200vh
-    &[data-fullscreen='true']
-      @media (max-aspect-ratio: 16/9)
-        iframe
-          width: 200vw
-          height: 100vh
-      @media (min-aspect-ratio: 16/9)
-        iframe
-          width: 100vw
-          height: 200vh
+      height: 1000%
+      width: 100%
 </style>
