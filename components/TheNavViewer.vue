@@ -1,7 +1,7 @@
 <template>
   <section class="section section-NavViewer">
     <div class="section-NavViewer_Title">
-      <h1>NEW VENTUS</h1>
+      <h1 v-if="$route.name === 'index'">NEW VENTUS</h1>
     </div>
     <ul class="section-NavViewer_VideoContainer">
       <li
@@ -102,7 +102,7 @@ export default {
   },
   watch: {
     $route() {
-      // console.log(this.$route)
+      console.log(this.$route)
     }
   },
   mounted() {
@@ -681,11 +681,11 @@ export default {
       left: 0
       font-size: 4rem
       z-index: $titles
-      color: white
+      // color: white
       padding-left: 1rem
       h1
         color: rgba(0,0,0,0)
-        -webkit-text-stroke: 2px white
+        -webkit-text-stroke: 2px black
     &_VideoContainer
       position: relative
       width: 100%
