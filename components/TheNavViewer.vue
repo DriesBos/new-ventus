@@ -22,9 +22,11 @@
       :data-fullscreen="fullscreen"
       class="section-NavViewer_Nav section-NavViewer_Prev"
     >
-      <div class="controls-Row">
-        <p @click="clickNextProject">previous</p>
-      </div>
+      <transition name="navControls">
+        <div v-if="!fullscreen" class="controls-Row">
+          <p @click="clickNextProject">previous</p>
+        </div>
+      </transition>
     </div>
     <!-- CENTER -->
     <div
@@ -33,24 +35,32 @@
       class="section-NavViewer_Nav section-NavViewer_Center"
     >
       <div class="controls-Row">
-        <p v-if="$route.name === 'index'" @click="clickCenterProject">
-          view project
-        </p>
-        <p
-          v-if="$route.name === 'projects-slug' && !fullscreen"
-          @click="toggleFullscreen"
-        >
-          fullscreen
-        </p>
-        <p
-          v-if="$route.name === 'projects-slug' && !fullscreen"
-          @click="clickCenterProject"
-        >
-          close
-        </p>
-        <p v-if="fullscreen" @click="toggleFullscreen">
-          close
-        </p>
+        <transition name="navControls">
+          <p v-if="$route.name === 'index'" @click="clickCenterProject">
+            view project
+          </p>
+        </transition>
+        <transition name="navControls">
+          <p
+            v-if="$route.name === 'projects-slug' && !fullscreen"
+            @click="toggleFullscreen"
+          >
+            fullscreen
+          </p>
+        </transition>
+        <transition name="navControls">
+          <p
+            v-if="$route.name === 'projects-slug' && !fullscreen"
+            @click="clickCenterProject"
+          >
+            close
+          </p>
+        </transition>
+        <transition name="navControls">
+          <p v-if="fullscreen" @click="toggleFullscreen">
+            close
+          </p>
+        </transition>
       </div>
     </div>
     <!-- NEXT -->
@@ -701,14 +711,19 @@ export default {
   height: 33.3333vh
   cursor: pointer
   overflow: hidden
-  iframe
-    @media (max-aspect-ratio: 16/9)
-      height: 100%
-      width: 1000%
-    @media (min-aspect-ratio: 16/9)
+  &[data-project="0"], &[data-project="1"], &[data-project="3"], &[data-project="4"]
+    iframe
+      @media (max-aspect-ratio: 1477/776)
+        height: 100%
+        width: 1000%
+      @media (min-aspect-ratio: 1477/776)
+        height: 1000%
+        width: 100%
+  &[data-project="2"]
+    iframe
       height: 1000%
       width: 100%
   &[data-page="projects-slug"][data-project="2"]
     .controls-Row_Fullscreen
-      display: flex
+      opacity: 1
 </style>
