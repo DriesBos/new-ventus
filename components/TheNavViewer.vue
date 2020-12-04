@@ -564,6 +564,7 @@ export default {
     setAnimateStart() {
       var width = window.innerWidth
       var height = window.innerHeight
+      this.fullscreen = false
       if (this.$route.name === "index") {
         setTimeout(function() {
           var array = document.querySelectorAll(".project")
