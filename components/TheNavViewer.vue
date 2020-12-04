@@ -708,4 +708,7 @@ export default {
     @media (min-aspect-ratio: 16/9)
       height: 1000%
       width: 100%
+  &[data-page="projects-slug"][data-project="2"]
+    .controls-Row_Fullscreen
+      display: flex
 </style>
