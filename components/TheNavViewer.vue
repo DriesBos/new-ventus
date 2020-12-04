@@ -18,31 +18,36 @@
     <div
       class="section-NavViewer_Nav section-NavViewer_Next"
       :data-page="$route.name"
-      @click="clickNextProject"
     >
       <div class="controls-Row">
-        <p>previous</p>
+        <p @click="clickNextProject">previous</p>
       </div>
     </div>
     <div
       class="section-NavViewer_Nav section-NavViewer_Center"
       :data-page="$route.name"
-      @click="clickCenterProject"
     >
       <div class="controls-Row">
-        <p v-if="$route.name === 'index'">view project</p>
-        <p v-if="$route.name === 'projects-slug'">fullscreen</p>
-        <p v-if="$route.name === 'projects-slug'">close</p>
-        <p v-if="$route.name === 'fullscreen'">close</p>
+        <p v-if="$route.name === 'index'" @click="clickCenterProject">
+          view project
+        </p>
+        <p v-if="$route.name === 'projects-slug'" @click="toggleFullscreen">
+          fullscreen
+        </p>
+        <p v-if="$route.name === 'projects-slug'" @click="clickCenterProject">
+          close
+        </p>
+        <p v-if="$route.name === 'fullscreen'" @click="toggleFullscreen">
+          close
+        </p>
       </div>
     </div>
     <div
       class="section-NavViewer_Nav section-NavViewer_Prev"
       :data-page="$route.name"
-      @click="clickPrevProject"
     >
       <div class="controls-Row">
-        <p>next</p>
+        <p @click="clickPrevProject">next</p>
       </div>
     </div>
   </section>
@@ -600,6 +605,7 @@ export default {
         padding: 1rem
         color: white
         mix-blend-mode: difference
+        cursor: pointer
       .controls-Row
         position: absolute
         display: flex
