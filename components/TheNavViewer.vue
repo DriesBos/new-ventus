@@ -665,16 +665,6 @@ export default {
       position: absolute
       z-index: $video-prevnext
       // border: 2px solid purple
-      p
-        padding: 1rem
-        color: white
-        mix-blend-mode: difference
-        cursor: pointer
-      .controls-Row
-        position: absolute
-        display: flex
-        left: 0
-        bottom: 0
     &_Prev
       left: 0
       bottom: 0

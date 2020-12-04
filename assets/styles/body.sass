@@ -28,6 +28,26 @@ header
   .nuxt-link-exact-active
     text-decoration: underline
 
+.controls-Row
+  position: absolute
+  display: flex
+  left: 0
+  bottom: 0
+  z-index: 999
+  color: white
+  &_Fullscreen
+    left: auto
+    right: 0
+  &[data-page="index"]
+    &.controls-Row_Fullscreen
+      display: none
+  p
+    padding: 1rem
+    cursor: pointer
+    color: currentColor
+    span
+      color: currentColor
+
 // Aspect ratio CSS
 .aspectRatioOutside
   position: relative
