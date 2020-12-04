@@ -1,5 +1,8 @@
 <template>
   <div v-editable="story.content" class="page page-Project_Slug">
+    <div class="section-NavViewer_Title">
+      <h1>{{ story.content.title }}</h1>
+    </div>
     <div class="slug-Title">
       <h1>{{ story.content.title }}</h1>
     </div>
@@ -61,17 +64,16 @@ export default {
 <style lang="sass">
 .slug
   &-Title
-    position: absolute
-    top: 0
-    left: 0
+    position: relative
     font-size: 4rem
     z-index: $titles
-    color: white
-    padding-top: 1rem
-    padding-left: 1rem
+    color: black
+    margin-top: var(--spacing-vertical)
+    margin-bottom: var(--spacing-vertical)
+    padding-left: 20vw
     h1
       color: rgba(0,0,0,0)
-      -webkit-text-stroke: 2px white
+      -webkit-text-stroke: 2px black
       text-transform: uppercase
       line-height: 1.25
 </style>
