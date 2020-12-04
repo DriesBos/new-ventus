@@ -1,5 +1,8 @@
 <template>
   <section class="section section-NavViewer">
+    <div class="section-NavViewer_Title">
+      <h1>NEW VENTUS</h1>
+    </div>
     <ul class="section-NavViewer_VideoContainer">
       <li
         v-for="(item, i) in list"
@@ -88,7 +91,8 @@ export default {
       direction: null,
       list: {},
       fullscreen: false,
-      animationDuration: 1
+      animationDuration: 1,
+      animationEase: "Power4.easeInOut"
     }
   },
   computed: {
@@ -180,7 +184,7 @@ export default {
       array.forEach(el => {
         if (el.dataset.project === "2" && this.fullscreen) {
           gsap.to(el, {
-            ease: "Power4.easeInOut",
+            ease: this.animationEase,
             duration: this.animationDuration,
             left: 0,
             top: 0,
@@ -189,7 +193,7 @@ export default {
           })
         } else if (el.dataset.project === "2" && !this.fullscreen) {
           gsap.to(el, {
-            ease: "Power4.easeInOut",
+            ease: this.animationEase,
             duration: this.animationDuration,
             left: "20vw",
             top: 0,
@@ -199,7 +203,7 @@ export default {
         }
         if (el.dataset.project === "1" && this.fullscreen) {
           gsap.to(el, {
-            ease: "Power4.easeInOut",
+            ease: this.animationEase,
             duration: this.animationDuration,
             left: "-20vw",
             top: "100vh",
@@ -208,7 +212,7 @@ export default {
           })
         } else if (el.dataset.project === "1" && !this.fullscreen) {
           gsap.to(el, {
-            ease: "Power4.easeInOut",
+            ease: this.animationEase,
             duration: this.animationDuration,
             left: 0,
             top: height - (height - width * 0.3) / 2,
@@ -225,7 +229,7 @@ export default {
       array.forEach(el => {
         if (el.dataset.project === "2") {
           gsap.to(el, {
-            ease: "Power4.easeInOut",
+            ease: this.animationEase,
             duration: this.animationDuration,
             left: "20vw",
             top: 0,
@@ -234,7 +238,7 @@ export default {
           })
         } else if (el.dataset.project === "3") {
           gsap.to(el, {
-            ease: "Power4.easeInOut",
+            ease: this.animationEase,
             duration: this.animationDuration,
             left: "100vw",
             top: 0 - (height - width * 0.3) / 2,
@@ -254,7 +258,7 @@ export default {
             opacity: 1
           })
           gsap.to(el, {
-            ease: "Power4.easeInOut",
+            ease: this.animationEase,
             duration: this.animationDuration,
             left: "20vw",
             top: (height - width * 0.3) / 2,
@@ -266,7 +270,7 @@ export default {
             opacity: 1
           })
           gsap.to(el, {
-            ease: "Power4.easeInOut",
+            ease: this.animationEase,
             duration: this.animationDuration,
             left: "80vw",
             top: 0,
@@ -286,7 +290,7 @@ export default {
             opacity: 0
           })
           gsap.to(el, {
-            ease: "Power4.easeInOut",
+            ease: this.animationEase,
             duration: this.animationDuration,
             left: "100vw",
             top: 0 - (height - width * 0.3) / 2,
@@ -295,7 +299,7 @@ export default {
           })
         } else if (el.dataset.project === "1") {
           gsap.to(el, {
-            ease: "Power4.easeInOut",
+            ease: this.animationEase,
             duration: this.animationDuration,
             left: "-20vw",
             top: "100vh",
@@ -304,7 +308,7 @@ export default {
           })
         } else if (el.dataset.project === "2") {
           gsap.to(el, {
-            ease: "Power4.easeInOut",
+            ease: this.animationEase,
             duration: this.animationDuration,
             left: 0,
             top: height - (height - width * 0.3) / 2,
@@ -313,7 +317,7 @@ export default {
           })
         } else if (el.dataset.project === "3") {
           gsap.to(el, {
-            ease: "Power4.easeInOut",
+            ease: this.animationEase,
             duration: this.animationDuration,
             left: "20vw",
             top: (height - width * 0.3) / 2,
@@ -325,7 +329,7 @@ export default {
             opacity: 1
           })
           gsap.to(el, {
-            ease: "Power4.easeInOut",
+            ease: this.animationEase,
             duration: this.animationDuration,
             left: "80vw",
             top: 0,
@@ -345,7 +349,7 @@ export default {
             opacity: 1
           })
           gsap.to(el, {
-            ease: "Power4.easeInOut",
+            ease: this.animationEase,
             duration: this.animationDuration,
             left: 0,
             top: height - (height - width * 0.3) / 2,
@@ -354,7 +358,7 @@ export default {
           })
         } else if (el.dataset.project === "1") {
           gsap.to(el, {
-            ease: "Power4.easeInOut",
+            ease: this.animationEase,
             duration: this.animationDuration,
             left: "20vw",
             top: (height - width * 0.3) / 2,
@@ -363,7 +367,7 @@ export default {
           })
         } else if (el.dataset.project === "2") {
           gsap.to(el, {
-            ease: "Power4.easeInOut",
+            ease: this.animationEase,
             duration: this.animationDuration,
             left: "80vw",
             top: 0,
@@ -372,7 +376,7 @@ export default {
           })
         } else if (el.dataset.project === "3") {
           gsap.to(el, {
-            ease: "Power4.easeInOut",
+            ease: this.animationEase,
             duration: this.animationDuration,
             left: "100vw",
             top: 0 - (height - width * 0.3) / 2,
@@ -384,7 +388,7 @@ export default {
             opacity: 0
           })
           gsap.to(el, {
-            ease: "Power4.easeInOut",
+            ease: this.animationEase,
             duration: this.animationDuration,
             left: "-20vw",
             top: "100vh",
@@ -404,7 +408,7 @@ export default {
             opacity: 1
           })
           gsap.to(el, {
-            ease: "Power4.easeInOut",
+            ease: this.animationEase,
             duration: this.animationDuration,
             left: 0,
             top: height - (height - width * 0.3) / 2,
@@ -413,7 +417,7 @@ export default {
           })
         } else if (el.dataset.project === "1") {
           gsap.to(el, {
-            ease: "Power4.easeInOut",
+            ease: this.animationEase,
             duration: this.animationDuration,
             left: "20vw",
             top: 0,
@@ -422,7 +426,7 @@ export default {
           })
         } else if (el.dataset.project === "2") {
           gsap.to(el, {
-            ease: "Power4.easeInOut",
+            ease: this.animationEase,
             duration: this.animationDuration,
             left: "100vw",
             top: 0 - (height - width * 0.3) / 2,
@@ -431,7 +435,7 @@ export default {
           })
         } else if (el.dataset.project === "3") {
           gsap.to(el, {
-            ease: "Power4.easeInOut",
+            ease: this.animationEase,
             duration: this.animationDuration,
             left: "100vw",
             top: 0 - (height - width * 0.3) / 2,
@@ -443,7 +447,7 @@ export default {
             opacity: 0
           })
           gsap.to(el, {
-            ease: "Power4.easeInOut",
+            ease: this.animationEase,
             duration: this.animationDuration,
             left: "-20vw",
             top: "100vh",
@@ -463,7 +467,7 @@ export default {
             opacity: 0
           })
           gsap.to(el, {
-            ease: "Power4.easeInOut",
+            ease: this.animationEase,
             duration: this.animationDuration,
             left: "100vw",
             top: 0 - (height - width * 0.3) / 2,
@@ -475,7 +479,7 @@ export default {
             opacity: 1
           })
           gsap.to(el, {
-            ease: "Power4.easeInOut",
+            ease: this.animationEase,
             duration: this.animationDuration,
             left: "-20vw",
             top: "100vh",
@@ -487,7 +491,7 @@ export default {
             opacity: 1
           })
           gsap.to(el, {
-            ease: "Power4.easeInOut",
+            ease: this.animationEase,
             duration: this.animationDuration,
             left: 0,
             top: height - (height - width * 0.3) / 2,
@@ -499,7 +503,7 @@ export default {
             opacity: 1
           })
           gsap.to(el, {
-            ease: "Power4.easeInOut",
+            ease: this.animationEase,
             duration: this.animationDuration,
             left: "20vw",
             top: 0,
@@ -511,7 +515,7 @@ export default {
             opacity: 0
           })
           gsap.to(el, {
-            ease: "Power4.easeInOut",
+            ease: this.animationEase,
             duration: this.animationDuration,
             left: "100vw",
             top: 0 - (height - width * 0.3) / 2,
@@ -671,14 +675,25 @@ export default {
     width: 100%
     height: 100vh
     overflow: hidden
+    &_Title
+      position: absolute
+      top: 0
+      left: 0
+      font-size: 4rem
+      z-index: $titles
+      color: white
+      padding-left: 1rem
+      h1
+        color: rgba(0,0,0,0)
+        -webkit-text-stroke: 2px white
     &_VideoContainer
       position: relative
       width: 100%
       height: 100%
+      z-index: -1
     &_Nav
       position: absolute
-      z-index: $video-prevnext
-      // border: 2px solid purple
+      z-index: $slider-controls
     &_Prev
       left: 0
       bottom: 0

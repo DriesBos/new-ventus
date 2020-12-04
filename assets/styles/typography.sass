@@ -4,16 +4,16 @@
   font-weight: normal
   font-style: normal
 
-// @font-face
-//   font-family: ''
-//   src: url('~assets/fonts/') format('')
-//   font-weight: normal
-//   font-style: italic
-
 @font-face
   font-family: 'GT America Regular'
   src: url('~assets/fonts/GTAmerica-Bold.woff') format('woff')
   font-weight: bold
+  font-style: normal
+
+@font-face
+  font-family: 'Presicav'
+  src: url('~assets/fonts/PresicavRg-Regular.woff2') format('woff2')
+  font-weight: normal
   font-style: normal
 
 // https://www.madebymike.com.au/writing/fluid-type-calc-examples/
@@ -49,31 +49,39 @@ li, h1, h2, h3, h4, h5, blockquote, p, a, a:link, a:visited, a:hover, a:active, 
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
 
+h1, h2, h3, h4, h5
+  font-family: 'Presicav'
+
 .markdown
   p
     font-size: $type-size-p
     line-height: $lineheight-p
   h1
+    font-family: 'Presicav'
     font-size: $type-size-h1
     line-height: $lineheight-h
     letter-spacing: $letterspacing-h
     font-weight: 500
   h2
+    font-family: 'Presicav'
     font-size: $type-size-h1
     line-height: $lineheight-h
     letter-spacing: $letterspacing-h
     font-weight: 500
   h3
+    font-family: 'Presicav'
     font-size: $type-size-h2
     line-height: $lineheight-h
     letter-spacing: $letterspacing-h
     font-weight: 500
   h4
+    font-family: 'Presicav'
     font-size: $type-size-h3
     line-height: $lineheight-h
     letter-spacing: $letterspacing-h
     font-weight: 500
   h5
+    font-family: 'Presicav'
     font-size: $type-size-p
     line-height: $lineheight-p
   a
