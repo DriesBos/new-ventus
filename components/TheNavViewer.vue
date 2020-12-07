@@ -558,7 +558,6 @@ export default {
       })
     },
     initProjectNumbers() {
-      console.log("INIT PROJECT INDEX")
       var route = this.$route
       setTimeout(function() {
         var array = document.querySelectorAll(".project")
