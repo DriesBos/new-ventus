@@ -31,7 +31,7 @@ export default {
     }
   },
   mounted() {
-    console.log("VIDEO ITEM VIMEO", this.blok)
+    // console.log("VIDEO ITEM VIMEO", this.blok)
   },
   methods: {
     toggleSound() {

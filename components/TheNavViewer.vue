@@ -102,7 +102,7 @@ export default {
   },
   watch: {
     $route() {
-      console.log(this.$route)
+      // console.log(this.$route)
     }
   },
   mounted() {
@@ -558,12 +558,34 @@ export default {
       })
     },
     initProjectNumbers() {
+      console.log("INIT PROJECT INDEX")
+      var route = this.$route
       setTimeout(function() {
         var array = document.querySelectorAll(".project")
-        array.forEach((el, index) => {
-          return (el.dataset.project = index)
-        })
-      }, 125)
+        if (route.name === "index") {
+          array.forEach((el, index) => {
+            return (el.dataset.project = index)
+          })
+        } else if (route.name === "projects-slug") {
+          var indexMain = 0
+          array.forEach((el, index) => {
+            if (el.dataset.slug == route.params.slug) {
+              indexMain = 2 - index
+              el.dataset.project = 2
+            }
+          })
+          array.forEach((el, index) => {
+            el.dataset.project = index + indexMain
+          })
+          array.forEach(el => {
+            if (el.dataset.project < 0) {
+              el.dataset.project = parseInt(el.dataset.project) + 5
+            } else if (el.dataset.project > 4) {
+              el.dataset.project = parseInt(el.dataset.project) - 5
+            }
+          })
+        }
+      }, 250)
     },
     setAnimateStart() {
       var width = window.innerWidth
