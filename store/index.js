@@ -33,6 +33,21 @@ export default {
         }
       })
       commit("projects/update", projects)
+
+      let getAbout = await app.$storyapi.get("cdn/stories/", {
+        version: process.env.NODE_ENV === "production" ? "published" : "draft",
+        by_uuids: "37ad02c0-b302-4002-a4e1-0bd34d7d5eac"
+      })
+      let about = getAbout.data.stories.map(bp => {
+        return {
+          id: bp.uuid,
+          slug: bp.slug,
+          created_at: bp.created_at,
+          taglist: bp.tag_list,
+          content: bp.content
+        }
+      })
+      commit("about/update", about)
     }
   }
 }

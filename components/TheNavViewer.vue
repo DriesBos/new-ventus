@@ -85,6 +85,7 @@
 import lodash from "lodash"
 import { mapState } from "vuex"
 import { gsap } from "gsap"
+
 export default {
   data() {
     return {
