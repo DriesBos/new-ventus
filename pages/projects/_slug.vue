@@ -17,9 +17,10 @@
 
 <script>
 import onPageLoad from "@/mixins/onPageLoad"
+import storyblokLivePreview from "@/mixins/storyblokLivePreview"
 
 export default {
-  mixins: [onPageLoad],
+  mixins: [onPageLoad, storyblokLivePreview],
   asyncData(context) {
     let endpoint = "cdn/stories/projects/" + context.params.slug
     return context.app.$storyapi

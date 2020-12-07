@@ -10,11 +10,11 @@
 </template>
 
 <script>
-import storyblokLivePreview from "@/mixins/storyblokLivePreview"
 import onPageLoad from "@/mixins/onPageLoad"
+import storyblokLivePreview from "@/mixins/storyblokLivePreview"
 
 export default {
-  mixins: [storyblokLivePreview, onPageLoad],
+  mixins: [onPageLoad, storyblokLivePreview],
   asyncData(context) {
     return context.app.$storyapi
       .get("cdn/stories/home", {
