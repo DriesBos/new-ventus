@@ -96,16 +96,16 @@ header
       display: flex
       flex-direction: column
       align-items: center
+      padding-left: 2.5rem
       @media screen and ( max-width: $breakpoint-tablet)
         align-items: flex-end
         padding-right: 2.5rem
       @media screen and ( max-width: $breakpoint-mobile)
-        padding-left: 2.5rem
         padding-right: 2.5rem
       .item-NonImage_Single
-        width: 60vw
+        width: calc(60vw - 2.5rem)
         @media screen and ( max-width: $breakpoint-tablet)
-          width: calc(80vw - 2.5rem)
+          width: calc(80vw - 5rem)
         @media screen and ( max-width: $breakpoint-mobile)
           width: calc(100vw - 5rem)
 

@@ -28,7 +28,7 @@ export default {
     &_Single
       display: flex
       padding: 1.25rem 0
-      border-bottom: 1px solid black
+      border-bottom: 1px solid $black
       > div
         flex-basis: 50%
       .markdown
@@ -37,9 +37,9 @@ export default {
           line-height: $lineheight-data
         a
           text-decoration: none
-          border-bottom: 1px solid black
+          border-bottom: 1px solid $black
       &:first-of-type
-        border-top: 1px solid black
+        border-top: 1px solid $black
       &:last-of-type
-        border-bottom: 1px solid black
+        border-bottom: 1px solid $black
 </style>

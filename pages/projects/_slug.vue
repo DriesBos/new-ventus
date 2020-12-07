@@ -65,13 +65,13 @@ export default {
     position: relative
     font-size: 4rem
     z-index: $titles
-    color: black
+    color: $black
     margin-top: var(--spacing-vertical)
     margin-bottom: var(--spacing-vertical)
     padding-left: 20vw
     h1
       color: rgba(0,0,0,0)
-      -webkit-text-stroke: 2px black
+      -webkit-text-stroke: 2px $black
       text-transform: uppercase
       line-height: 1.25
 </style>
