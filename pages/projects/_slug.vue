@@ -3,9 +3,6 @@
     <div class="section-NavViewer_Title">
       <h1>{{ story.content.title }}</h1>
     </div>
-    <!-- <div class="slug-Title">
-      <h1>{{ story.content.title }}</h1>
-    </div> -->
     <component
       :is="blok.component | dashify"
       v-for="blok in story.content.body"
