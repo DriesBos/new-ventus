@@ -36,9 +36,29 @@ export default {
     })
   },
   mounted() {
-    console.log("ABOUT", this.about)
+    this.onScroll()
   },
   methods: {
+    onScroll() {
+      var target = document.querySelector(".about-Container")
+      var trigger = document.querySelector(".section-NavViewer")
+      gsap.fromTo(
+        target,
+        {
+          opacity: 0
+        },
+        {
+          opacity: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: trigger,
+            scrub: true,
+            start: "bottom bottom",
+            end: "+=1px"
+          }
+        }
+      )
+    },
     toggleAbout() {
       var aboutPage = document.querySelector(".page-About")
       var container = document.querySelector(".about-Container")
@@ -137,4 +157,5 @@ export default {
     height: calc((100vh - 30vw)/4)
     overflow: auto
     pointer-events: auto
+    opacity: 0
 </style>
