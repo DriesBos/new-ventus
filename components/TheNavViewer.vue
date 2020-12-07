@@ -693,7 +693,6 @@ export default {
       position: relative
       width: 100%
       height: 100%
-      z-index: -1
     &_Nav
       position: absolute
       z-index: $slider-controls
@@ -745,4 +744,5 @@ export default {
   &[data-page="projects-slug"][data-project="2"]
     .controls-Row_Fullscreen
       opacity: 1
+      z-index: $video-controls
 </style>
