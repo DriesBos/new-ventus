@@ -1,7 +1,7 @@
 <template>
-  <div v-editable="blok" class="item item-Text">
-    <div class="item-Text_Container item-Container medium">
-      <div class="item-Text_Single item-Single">
+  <div v-editable="blok" class="item item-NonImage item-Text">
+    <div class="item_Container item-NonImage_Container item-Text_Container">
+      <div class="item_Single item-NonImage_Single item-Text_Single">
         <LazyMarkdown :input="blok.text" />
       </div>
     </div>
@@ -15,20 +15,3 @@ export default {
   }
 }
 </script>
-
-<style lang="sass">
-.item-Text
-  margin-top: var(--spacing-vertical)
-  margin-bottom: var(--spacing-vertical)
-  // &_Container
-  //   &.small
-  //     .item-Text_Single
-  //       padding-right: 1em
-  //   &.large
-  //     .item-Text_Single
-  //       padding-right: 1em
-  //   &.full
-  //     .item-Text_Single
-  //       padding-left: 1em
-  //       padding-right: 1em
-</style>

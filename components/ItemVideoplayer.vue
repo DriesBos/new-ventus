@@ -1,5 +1,5 @@
 <template>
-  <div v-editable="blok" class="item item-Videoplayer">
+  <div v-editable="blok" class="item item-Image item-Videoplayer">
     <div class="item-Videoplayer_Outer" :class="blok.width">
       <div :id="blok._uid" class="item-Videoplayer_Outer">
         <LazyPlayerYoutube

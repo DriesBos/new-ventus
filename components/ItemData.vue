@@ -1,6 +1,6 @@
 <template>
-  <div v-editable="blok" class="item item-Data">
-    <div class="item-Data_Container item-Container medium">
+  <div v-editable="blok" class="item item-NonImage item-Data">
+    <div class="item_Container item-NonImage_Container item-Data_Container">
       <component
         :is="blok.component | dashify"
         v-for="blok in blok.body"
@@ -25,11 +25,6 @@ export default {
 <style lang="sass">
 .item
   &-Data
-    margin-top: var(--spacing-vertical)
-    margin-bottom: var(--spacing-vertical)
-    &_Container
-      display: flex
-      flex-direction: column
     &_Single
       display: flex
       padding: 1.25rem 0

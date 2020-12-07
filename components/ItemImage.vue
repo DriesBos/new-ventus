@@ -1,7 +1,7 @@
 <template>
   <div v-editable="blok" class="item item-Image">
-    <div class="item-Image_Container item-Container" :class="blok.size">
-      <div class="item-Image_Single item-Single">
+    <div class="item_Container item-Image_Container" :class="blok.size">
+      <div class="item_Single item-Image_Single">
         <img
           v-lazy="`${transformImage(blok.image.filename, '1440x0')}`"
           :data-srcset="

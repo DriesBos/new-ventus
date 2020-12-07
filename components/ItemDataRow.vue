@@ -1,5 +1,5 @@
 <template>
-  <div class="item-Data_Single item-Single">
+  <div class="item_Single item-NonImage_Single item-Data_Single">
     <LazyMarkdown :input="blok.text_left" />
     <LazyMarkdown :input="blok.text_right" />
   </div>

@@ -57,24 +57,57 @@ header
       height: 100%
 
 .item
-  &-Container
-    display: flex
-    &.small
-      justify-content: flex-end
-      .item-Single
-        width: 20vw
-    &.medium
-      justify-content: center
-      .item-Single
+  // Image items
+  &-Image
+    &_Container
+      display: flex
+      &.small
+        justify-content: flex-end
+        .item-Image_Single
+          width: 20vw
+          @media screen and ( max-width: $breakpoint-tablet)
+            width: 40vw
+          @media screen and ( max-width: $breakpoint-mobile)
+            width: 50vw
+      &.medium
+        justify-content: center
+        @media screen and ( max-width: $breakpoint-tablet)
+          justify-content: flex-start
+        .item-Image_Single
+          width: 60vw
+          @media screen and ( max-width: $breakpoint-tablet)
+            width: 60vw
+          @media screen and ( max-width: $breakpoint-mobile)
+            width: 75vw
+      &.large
+        justify-content: flex-end
+        .item-Image_Single
+          width: 80vw
+          @media screen and ( max-width: $breakpoint-mobile)
+            width: 100%
+      &.full
+        .item-Image_Single
+          width: 100%
+  // Text items
+  &-NonImage
+    margin-top: var(--spacing-vertical)
+    margin-bottom: var(--spacing-vertical)
+    &_Container
+      display: flex
+      flex-direction: column
+      align-items: center
+      @media screen and ( max-width: $breakpoint-tablet)
+        align-items: flex-end
+        padding-right: 2.5rem
+      @media screen and ( max-width: $breakpoint-mobile)
+        padding-left: 2.5rem
+        padding-right: 2.5rem
+      .item-NonImage_Single
         width: 60vw
-        align-self: center
-    &.large
-      justify-content: flex-end
-      .item-Single
-        width: 80vw
-    &.full
-      .item-Single
-        width: 100%
+        @media screen and ( max-width: $breakpoint-tablet)
+          width: calc(80vw - 2.5rem)
+        @media screen and ( max-width: $breakpoint-mobile)
+          width: calc(100vw - 5rem)
 
 .controls-Row
   position: absolute
