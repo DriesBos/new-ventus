@@ -126,8 +126,9 @@ export default {
     z-index: $about
     overflow: auto
     .markdown
-      p, h1, h2, h3, h4, h5
-        color: white
+      color: white
+      p, h1, h2, h3, h4, h5, a
+        color: currentColor
 .about
   &-Content
     opacity: 0
