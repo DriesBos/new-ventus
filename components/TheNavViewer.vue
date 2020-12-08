@@ -116,6 +116,7 @@ export default {
     window.addEventListener("resize", this.handleDebouncedResize)
     // KEYBINDINGS
     document.addEventListener("keydown", this.keyBindings)
+    console.log(this.projects, this.list)
   },
   destroyed() {
     window.removeEventListener("resize", this.setAnimateStart)
@@ -679,7 +680,7 @@ export default {
     },
     resetList() {
       this.list = [...this.projects]
-      this.sortByDate(this.list)
+      // this.sortByDate(this.list)
     },
     sortByDate(values) {
       values.sort((a, b) =>
