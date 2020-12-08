@@ -100,7 +100,7 @@ export default {
           right: "auto",
           bottom: 0,
           width: "20vw",
-          height: buttonHeight + "90px"
+          height: buttonHeight + "px"
         })
         gsap.to(aboutContent, {
           opacity: 0,
@@ -132,9 +132,9 @@ export default {
   &-Content
     opacity: 0
   &-Toggle
-    position: absolute
+    position: fixed
     left: 0
-    top: 0
+    bottom: 0
     background: $black
     width: 20vw
     display: flex
