@@ -1,5 +1,5 @@
 <template>
-  <div v-editable="blok" class="item item-NonImage item-Data mixBlend">
+  <section v-editable="blok" class="item item-NonImage item-Data mixBlend">
     <div class="item_Container item-NonImage_Container item-Data_Container">
       <component
         :is="blok.component | dashify"
@@ -8,7 +8,7 @@
         :blok="blok"
       ></component>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>

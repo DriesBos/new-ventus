@@ -698,7 +698,7 @@ export default {
     background-color: white
     transition: background-color .33s ease-in
     &_Title
-      position: absolute
+      position: fixed
       top: 0
       left: 0
       font-size: 4rem

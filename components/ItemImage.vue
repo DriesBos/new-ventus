@@ -1,5 +1,5 @@
 <template>
-  <div v-editable="blok" class="item item-Image">
+  <section v-editable="blok" class="item item-Image">
     <div class="item_Container item-Image_Container" :class="blok.size">
       <div class="item_Single item-Image_Single">
         <img
@@ -16,7 +16,7 @@
         />
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
