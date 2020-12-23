@@ -32,10 +32,10 @@ export default {
         this.$route.name == "projects-slug"
       ) {
         document.body.style.backgroundColor = "black"
-        viewer.style.backgroundColor = "black"
+        viewer.style.backgroundColor = "rgba(0,0,0,0)"
       } else {
         document.body.style.backgroundColor = "black"
-        viewer.style.backgroundColor = "black"
+        viewer.style.backgroundColor = "rgba(0,0,0,0)"
       }
     },
     scrollSlow() {
