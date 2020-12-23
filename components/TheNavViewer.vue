@@ -43,20 +43,20 @@
             view project
           </p>
         </transition>
-        <transition name="navControls">
+        <!-- <transition name="navControls">
           <p
             v-if="$route.name === 'projects-slug' && !fullscreen"
             @click="toggleFullscreen"
           >
             fullscreen
           </p>
-        </transition>
+        </transition> -->
         <transition name="navControls">
           <p
             v-if="$route.name === 'projects-slug' && !fullscreen"
             @click="clickCenterProject"
           >
-            close
+            close project
           </p>
         </transition>
         <transition name="navControls">
@@ -101,11 +101,6 @@ export default {
       projects: state => state.projects.list
     })
   },
-  watch: {
-    $route() {
-      // console.log(this.$route)
-    }
-  },
   mounted() {
     // INIT
     this.resetList()
@@ -118,6 +113,7 @@ export default {
     document.addEventListener("keydown", this.keyBindings)
     console.log(this.projects, this.list)
   },
+  updated() {},
   destroyed() {
     window.removeEventListener("resize", this.setAnimateStart)
   },
@@ -699,17 +695,20 @@ export default {
     height: 100vh
     overflow: hidden
     z-index: $slider
+    background-color: white
+    transition: background-color .33s ease-in
     &_Title
       position: absolute
       top: 0
       left: 0
       font-size: 4rem
       z-index: $titles
-      color: white
+      // color: white
       padding-top: 1rem
       padding-left: 1rem
+      mix-blend-mode: difference
       h1
-        color: rgba(0,0,0,0)
+        // color: rgba(0,0,0,0)
         -webkit-text-stroke: 2px white
         text-transform: uppercase
         line-height: 1.25
@@ -756,15 +755,21 @@ export default {
   height: 33.3333vh
   cursor: pointer
   overflow: hidden
+  transition: filter 1s ease
   iframe
     height: 1000%
     width: 100%
+    border: 2px solid red
     @media (max-aspect-ratio: 1477/776)
       height: 115%
       width: 1000%
     @media (min-aspect-ratio: 1477/776)
       height: 1000%
       width: 100%
+  &[data-project="0"], &[data-project="1"], &[data-project="3"], &[data-project="4"]
+    filter: grayscale(1)
+  &[data-project="2"]
+    filter: grayscale(0)
   &[data-page="projects-slug"][data-project="2"]
     .controls-Row_Fullscreen
       opacity: 1

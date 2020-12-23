@@ -12,7 +12,6 @@ export default {
   watch: {
     $route() {
       this.changeBackground()
-      // console.log(this.$route)
     }
   },
   mounted() {
@@ -24,13 +23,19 @@ export default {
   },
   methods: {
     changeBackground() {
+      var viewer = document.querySelector(".section-NavViewer")
       if (this.$route.name === "index") {
-        document.body.style.backgroundColor = "lightgrey"
+        document.body.style.backgroundColor = "white"
+        viewer.style.backgroundColor = "white"
       } else if (
         this.$route.name == "projects" ||
         this.$route.name == "projects-slug"
       ) {
-        document.body.style.backgroundColor = "lightgrey"
+        document.body.style.backgroundColor = "black"
+        viewer.style.backgroundColor = "black"
+      } else {
+        document.body.style.backgroundColor = "black"
+        viewer.style.backgroundColor = "black"
       }
     },
     scrollSlow() {
