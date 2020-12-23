@@ -4,7 +4,7 @@
       class="item_Container item-Image_Container item-Sound_Container medium"
     >
       <div class="item_Single item-Image_Single item-Sound_Single">
-        <p>Play soundscape</p>
+        <p @click="playAudio()">Play soundscape</p>
         <audio id="audioPlayer" preload="none" loop>
           <source :src="blok.file.filename" type="audio/mpeg" />
           Your browser does not support the <code>audio</code> element.
@@ -65,14 +65,17 @@ export default {
       position: relative
       display: flex
       align-items: center
+      padding-left: 2.5rem
+      padding-bottom: 1rem
       p
         display: inline
         margin-right: .5rem
+        cursor: pointer
       .item-AudioPlayer_Button
         color: white
-        cursor: pointer
         width: 1rem
         height: 1rem
+        cursor: pointer
         img
           height: 100%
 </style>
