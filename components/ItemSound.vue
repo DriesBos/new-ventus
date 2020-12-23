@@ -4,7 +4,6 @@
       class="item_Container item-Image_Container item-Sound_Container medium"
     >
       <div class="item_Single item-Image_Single item-Sound_Single">
-        <p @click="playAudio()">Play soundscape</p>
         <audio id="audioPlayer" preload="none" loop>
           <source :src="blok.file.filename" type="audio/mpeg" />
           Your browser does not support the <code>audio</code> element.
@@ -25,12 +24,21 @@
             v-html="require('~/assets/images/icon-stop.svg?include')"
           />
         </div>
+        <p @click="playAudio()">
+          <span v-if="audio === 'stopped' || audio === 'paused'">Play</span
+          ><span v-if="audio === 'playing'">Stop</span> soundscape
+        </p>
       </div>
     </div>
   </section>
 </template>
 
 <script>
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+gsap.registerPlugin(ScrollTrigger)
+
 export default {
   props: {
     blok: Object
@@ -42,8 +50,22 @@ export default {
   },
   mounted() {
     console.log(this.blok, "SOUND ITEM")
+    // this.stickyWhenVisible()
   },
   methods: {
+    stickyWhenVisible() {
+      var target = document.querySelector(".item-Sound")
+      gsap.to(target, {
+        position: "fixed",
+        ease: "none",
+        scrollTrigger: {
+          trigger: target,
+          // scrub: true,
+          start: "bottom bottom"
+          // end: "bottom top"
+        }
+      })
+    },
     playAudio() {
       var audio = document.getElementById("audioPlayer")
       if (this.audio === "stopped" || this.audio === "paused") {
@@ -61,6 +83,8 @@ export default {
 <style lang="sass">
 .item
   &-Sound
+    position: relative
+    bottom: 0
     &_Single
       position: relative
       display: flex
@@ -69,7 +93,7 @@ export default {
       padding-bottom: 1rem
       p
         display: inline
-        margin-right: .5rem
+        margin-left: .5rem
         cursor: pointer
       .item-AudioPlayer_Button
         color: white
