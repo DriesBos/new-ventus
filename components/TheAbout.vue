@@ -66,9 +66,9 @@ export default {
       var button = document.querySelector(".about-Toggle")
       var buttonHeight = button.clientHeight
       var windowHeight = window.innerHeight - buttonHeight
-      console.log("toggled", container, button, buttonHeight)
+      // console.log("toggled", container, button, buttonHeight)
       if (!this.aboutState) {
-        console.log("open")
+        // console.log("open")
         gsap.set(aboutPage, {
           zIndex: 900
         })
@@ -87,7 +87,7 @@ export default {
           delay: 0.5
         })
       } else {
-        console.log("close")
+        // console.log("close")
         gsap.set(aboutPage, {
           zIndex: 300,
           delay: this.animationDuration

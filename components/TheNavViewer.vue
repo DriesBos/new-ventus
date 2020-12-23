@@ -111,7 +111,7 @@ export default {
     window.addEventListener("resize", this.handleDebouncedResize)
     // KEYBINDINGS
     document.addEventListener("keydown", this.keyBindings)
-    console.log(this.projects, this.list)
+    // console.log(this.projects, this.list)
   },
   updated() {},
   destroyed() {
