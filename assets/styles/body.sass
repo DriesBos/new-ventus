@@ -2,6 +2,10 @@ body
   background-color: white
   transition: background-color .33s ease-in
 
+.mixBlend
+  color: white
+  mix-blend-mode: difference
+
 section
   max-width: 100%
   img
@@ -114,8 +118,7 @@ header
   display: flex
   left: 0
   bottom: 0
-  z-index: $slider-controls
-  color: white
+  mix-blend-mode: difference
   &_Fullscreen
     left: auto
     right: 0
@@ -125,9 +128,6 @@ header
     font-size: 1.25rem
     padding: 1em
     cursor: pointer
-    color: currentColor
-    span
-      color: currentColor
 
 // Important since overriding interactions
 .desktop

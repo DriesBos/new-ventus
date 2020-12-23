@@ -33,6 +33,9 @@ h1, h2, h3, p, a
   overflow-wrap: break-word
   word-break: normal
   hyphens: auto
+  // Mix blend mode
+  color: white
+  mix-blend-mode: difference
 
 .markdown p // No broken words in regular sized text paragraphs
   word-wrap: normal
@@ -43,7 +46,6 @@ h1, h2, h3, p, a
 li, h1, h2, h3, h4, h5, blockquote, p, a, a:link, a:visited, a:hover, a:active, span, input, button
   font-family: 'GT America Regular', sans-serif
   line-height: 1.5
-  color: $text-color
   font-style: normal
   font-weight: normal
   -webkit-font-smoothing: antialiased
@@ -85,7 +87,6 @@ h1, h2, h3, h4, h5
     font-size: $type-size-p
     line-height: $lineheight-p
   a
-    color: $text-color
     text-decoration: underline
   strong
     font-weight: bold

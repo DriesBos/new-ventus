@@ -125,10 +125,6 @@ export default {
     pointer-events: none
     z-index: $about
     overflow: auto
-    .markdown
-      color: white
-      p, h1, h2, h3, h4, h5, a
-        color: currentColor
 .about
   &-Content
     opacity: 0
@@ -144,7 +140,6 @@ export default {
     cursor: pointer
     pointer-events: auto
     p
-      color: white
       font-size: 1.25rem
       padding: 1em
   &-Container
