@@ -3,9 +3,7 @@
   <main lang="en-US" translate="no">
     <!-- <LazyTheNav /> -->
     <LazyTheNavViewer />
-    <transition name="pages" mode="out-in">
-      <nuxt />
-    </transition>
+    <nuxt />
     <LazyTheAbout />
   </main>
 </template>
