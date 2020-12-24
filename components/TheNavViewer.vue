@@ -758,7 +758,6 @@ export default {
   iframe
     height: 1000%
     width: 100%
-    border: 2px solid red
     @media (max-aspect-ratio: 1477/776)
       height: 115%
       width: 1000%
