@@ -2,6 +2,7 @@
   <section class="section section-NavViewer">
     <div class="section-NavViewer_Title">
       <h1 v-if="$route.name === 'index'">NEW VENTUS</h1>
+      <h2 v-if="$route.name === 'index'">Film production</h2>
     </div>
     <ul class="section-NavViewer_VideoContainer">
       <li
@@ -56,12 +57,12 @@
             v-if="$route.name === 'projects-slug' && !fullscreen"
             @click="toggleFullscreen"
           >
-            open fullscreen
+            fullscreen
           </p>
         </transition>
         <transition name="navControls">
           <p v-if="fullscreen" @click="toggleFullscreen">
-            close fullscreen
+            close
           </p>
         </transition>
       </div>
@@ -705,18 +706,19 @@ export default {
     transition: background-color .33s ease-in
     &_Title
       position: fixed
-      top: 0
-      left: 0
-      font-size: 4rem
+      left: 1rem
+      top: 1rem
       z-index: $titles
-      padding-top: 1rem
-      padding-left: 1rem
       mix-blend-mode: difference
-      max-width: 15em
+      max-width: 50rem
+      text-transform: uppercase
       h1
-        -webkit-text-stroke: 2px white
-        text-transform: uppercase
+        font-size: 4rem
         line-height: 1.25
+      h2
+        font-size: 1rem
+        line-height: 1.25
+        text-align: right
     &_VideoContainer
       position: relative
       width: 100%
