@@ -43,14 +43,6 @@
             view project
           </p>
         </transition>
-        <!-- <transition name="navControls">
-          <p
-            v-if="$route.name === 'projects-slug' && !fullscreen"
-            @click="toggleFullscreen"
-          >
-            fullscreen
-          </p>
-        </transition> -->
         <transition name="navControls">
           <p
             v-if="$route.name === 'projects-slug' && !fullscreen"
@@ -60,8 +52,16 @@
           </p>
         </transition>
         <transition name="navControls">
+          <p
+            v-if="$route.name === 'projects-slug' && !fullscreen"
+            @click="toggleFullscreen"
+          >
+            watch full video
+          </p>
+        </transition>
+        <transition name="navControls">
           <p v-if="fullscreen" @click="toggleFullscreen">
-            close
+            close video
           </p>
         </transition>
       </div>
@@ -121,6 +121,12 @@ export default {
     toggleFullscreen() {
       this.fullscreen = !this.fullscreen
       this.animateProjectFullscreen()
+      var el = document.body.querySelector('.project[data-project="2"] iframe')
+      if (this.fullscreen) {
+        el.src = el.src.slice(0, -1) + "0"
+      } else {
+        el.src = el.src.slice(0, -1) + "1"
+      }
     },
     keyBindings(event) {
       if (event.keyCode === 27 || event.keyCode === 32) {

@@ -9,9 +9,6 @@
       playsinline="true"
       title="false"
     />
-    <div :data-page="$route.name" class="controls-Row controls-Row_Fullscreen">
-      <p @click="toggleSound">sound <span v-if="muted">on</span> <span v-if="!muted">off</span></p>
-    </div>
   </div>
 </template>
 
@@ -34,13 +31,6 @@ export default {
     // console.log("VIDEO ITEM VIMEO", this.blok)
   },
   methods: {
-    toggleSound() {
-      if (this.muted === 1) {
-        this.muted = 0
-      } else {
-        this.muted = 1
-      }
-    },
     soundOff() {
       this.muted = 1
     }
