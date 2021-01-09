@@ -40,7 +40,7 @@
       <div class="controls-Row">
         <transition name="navControls">
           <p v-if="$route.name === 'index'" @click="clickCenterProject">
-            view project
+            open project
           </p>
         </transition>
         <transition name="navControls">
@@ -56,12 +56,12 @@
             v-if="$route.name === 'projects-slug' && !fullscreen"
             @click="toggleFullscreen"
           >
-            watch full video
+            open fullscreen
           </p>
         </transition>
         <transition name="navControls">
           <p v-if="fullscreen" @click="toggleFullscreen">
-            close video
+            close fullscreen
           </p>
         </transition>
       </div>
