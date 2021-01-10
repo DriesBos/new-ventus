@@ -1,8 +1,9 @@
 <template>
   <section class="section section-NavViewer">
-    <div class="section-NavViewer_Title">
-      <h1 v-if="$route.name === 'index'">NEW VENTUS</h1>
-      <h2 v-if="$route.name === 'index'">Film production</h2>
+    <div v-if="$route.name === 'index'" class="section-NavViewer_Title">
+      <h1>NEW VENTUS</h1>
+      <h1>FILM PRODUCTION</h1>
+      <!-- <h2>ABOUT US</h2> -->
     </div>
     <ul class="section-NavViewer_VideoContainer">
       <li
@@ -28,7 +29,7 @@
     >
       <div class="controls-Row">
         <transition name="navControls">
-          <p v-if="!fullscreen" @click="clickNextProject">previous</p>
+          <p v-if="!fullscreen" @click="clickNextProject">next</p>
         </transition>
       </div>
     </div>
@@ -75,7 +76,7 @@
     >
       <div class="controls-Row">
         <transition name="navControls">
-          <p v-if="$route.name === 'index'" @click="clickPrevProject">next</p>
+          <p v-if="$route.name === 'index'" @click="clickPrevProject"></p>
         </transition>
       </div>
     </div>
@@ -716,9 +717,8 @@ export default {
         font-size: 4rem
         line-height: 1.25
       h2
-        font-size: 1rem
+        font-size: 1.25rem
         line-height: 1.25
-        text-align: right
     &_VideoContainer
       position: relative
       width: 100%

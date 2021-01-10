@@ -2,6 +2,7 @@
   <div v-editable="story.content" class="page page-Project_Slug">
     <div class="section-NavViewer_Title">
       <h1>{{ story.content.title }}</h1>
+      <!-- <h2>ABOUT US</h2> -->
     </div>
     <component
       :is="blok.component | dashify"
@@ -54,7 +55,7 @@ export default {
     }
   },
   mounted() {
-    console.log(this.story.content, "PROJECT CONTENT")
+    // console.log(this.story.content, "PROJECT CONTENT")
   }
 }
 </script>
