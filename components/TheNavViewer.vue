@@ -60,6 +60,7 @@
             watch fullscreen
           </p>
         </transition>
+        <p v-if="fullscreen">&nbsp;</p>
         <transition name="navControls">
           <p v-if="fullscreen" @click="toggleFullscreen">
             close fullscreen
@@ -127,9 +128,11 @@ export default {
       if (this.fullscreen) {
         el.src = el.src.slice(0, -1) + "0"
         document.body.classList.add("noscroll")
+        document.body.classList.add("fullscreen")
       } else {
         el.src = el.src.slice(0, -1) + "1"
         document.body.classList.remove("noscroll")
+        document.body.classList.remove("fullscreen")
       }
     },
     keyBindings(event) {

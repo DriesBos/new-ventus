@@ -1,5 +1,5 @@
 <template>
-  <div class="about-Toggle">
+  <div class="fullscreenEnabled about-Toggle">
     <a
       v-if="!aboutProp"
       href="mailto:film@newventus.nl?subject=Konichiwa!"

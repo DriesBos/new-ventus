@@ -5,6 +5,12 @@ body
   &.noscroll
     height: 100%
     overflow: hidden
+  &.fullscreen
+    .fullscreenEnabled
+      opacity: 0
+
+.fullscreenEnabled
+  transition: opacity $nav-animation
 
 .mixBlend
   color: white

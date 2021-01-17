@@ -3,10 +3,10 @@
     <div class="section-NavViewer_Title">
       <template v-if="story.tag_list">
         <div v-for="tag in story.tag_list" :id="tag" :key="tag">
-          <p>{{ tag }}</p>
+          <p class="fullscreenEnabled">{{ tag }}</p>
         </div>
       </template>
-      <p v-else>Project</p>
+      <p v-else class="fullscreenEnabled">Project</p>
       <h1>{{ story.content.title }}</h1>
     </div>
     <component
