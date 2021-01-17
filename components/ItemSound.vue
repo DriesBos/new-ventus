@@ -4,14 +4,14 @@
       class="item_Container item-Image_Container item-Sound_Container medium"
     >
       <div class="item_Single item-Image_Single item-Sound_Single">
-        <audio id="audioPlayer" preload="none" loop>
+        <audio id="audioPlayer" preload="auto" loop>
           <source :src="blok.file.filename" type="audio/mpeg" />
           Your browser does not support the <code>audio</code> element.
         </audio>
         <div
           id="audioPlayButton"
           class="item-AudioPlayer_Button"
-          @click="playAudio()"
+          @click="pressAudio()"
         >
           <div
             v-if="audio === 'stopped' || audio === 'paused'"
@@ -24,7 +24,7 @@
             v-html="require('~/assets/images/icon-stop.svg?include')"
           />
         </div>
-        <p @click="playAudio()">
+        <p @click="pressAudio()">
           <span v-if="audio === 'stopped' || audio === 'paused'">Play</span
           ><span v-if="audio === 'playing'">Stop</span> soundscape
         </p>
@@ -45,14 +45,41 @@ export default {
   },
   data() {
     return {
-      audio: "stopped"
+      audio: "stopped",
+      offsetTop: 0,
+      controlsUsed: false
     }
   },
   mounted() {
     console.log(this.blok, "SOUND ITEM")
+    window.addEventListener("scroll", this.onScroll)
     // this.stickyWhenVisible()
   },
+  destroyed() {
+    window.removeEventListener("scroll", this.onScroll)
+  },
   methods: {
+    onScroll() {
+      var el = document.querySelector(".item-Sound")
+      this.offsetTop = window.pageYOffset || document.documentElement.scrollTop
+      if (
+        el.offsetTop - window.innerHeight / 2 < this.offsetTop &&
+        this.controlsUsed == false
+      ) {
+        this.audio = "stopped"
+        this.playAudio()
+      } else if (
+        el.offsetTop - window.innerHeight / 2 > this.offsetTop &&
+        this.controlsUsed == false
+      ) {
+        this.audio = "playing"
+        this.playAudio()
+      }
+    },
+    pressAudio() {
+      this.controlsUsed = true
+      this.playAudio()
+    },
     stickyWhenVisible() {
       var target = document.querySelector(".item-Sound")
       gsap.to(target, {

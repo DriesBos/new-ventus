@@ -19,7 +19,7 @@ export default {
     aboutProp: Boolean
   },
   mounted() {
-    console.log("TOOGGLE ABOUTPROP", this.aboutProp)
+    // console.log("TOOGGLE ABOUTPROP", this.aboutProp)
   },
   methods: {
     emitClicked() {

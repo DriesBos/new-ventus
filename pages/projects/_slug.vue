@@ -60,7 +60,7 @@ export default {
     }
   },
   mounted() {
-    console.log(this.story, "PROJECT CONTENT")
+    // console.log(this.story, "PROJECT CONTENT")
   }
 }
 </script>
