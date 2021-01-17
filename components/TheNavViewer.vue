@@ -715,14 +715,12 @@ export default {
       h1
         font-size: 4rem
         line-height: 1.25
-      h2
-        font-size: 1.25rem
-        line-height: 1.25
       p
         font-size: 1.25rem
         line-height: 1.33em
         font-family: 'Presicav', sans-serif
         text-transform: uppercase
+        margin-bottom: 1rem
     &_VideoContainer
       position: relative
       width: 100%

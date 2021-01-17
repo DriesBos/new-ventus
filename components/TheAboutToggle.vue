@@ -36,14 +36,13 @@ export default {
     top: 0
     right: 0
     display: flex
-    flex-direction: column
+    flex-direction: row
     align-items: flex-end
     cursor: pointer
     pointer-events: auto
     mix-blend-mode: difference
     z-index: $about
     padding-top: 1rem
-    padding-right: 1rem
     p, a
       position: relative
       font-size: 1.25rem
@@ -53,6 +52,7 @@ export default {
       text-decoration: none
       text-align: right
       display: inline
+      margin-right: 1.66rem
       &:hover
         &::after
           position: absolute
@@ -62,4 +62,6 @@ export default {
           height: 2px
           background: white
           content: ''
+    a:last-child
+      margin-right: 1rem
 </style>
