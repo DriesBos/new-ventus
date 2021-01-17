@@ -84,7 +84,7 @@ export default {
     top: 0
     width: 0
     height: 0
-    background: $black
+    background: $bg-about
     overflow-y: auto
     z-index: $about
   &-Content

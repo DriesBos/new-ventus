@@ -31,10 +31,10 @@ export default {
         this.$route.name == "projects" ||
         this.$route.name == "projects-slug"
       ) {
-        document.body.style.backgroundColor = "black"
+        document.body.style.backgroundColor = "#222222"
         viewer.style.backgroundColor = "rgba(0,0,0,0)"
       } else {
-        document.body.style.backgroundColor = "black"
+        document.body.style.backgroundColor = "#222222"
         viewer.style.backgroundColor = "rgba(0,0,0,0)"
       }
     },
