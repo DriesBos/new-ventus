@@ -723,10 +723,10 @@ export default {
         line-height: 1.25
       p
         font-size: 1.25rem
-        line-height: 1.33em
+        line-height: 1.25em
         font-family: 'Presicav', sans-serif
         text-transform: uppercase
-        margin-bottom: 1rem
+        margin-bottom: 2rem
     &_VideoContainer
       position: relative
       width: 100%
