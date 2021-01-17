@@ -149,6 +149,7 @@ export default {
         this.animatePrev()
         this.setPrevProject()
       } else {
+        document.documentElement.scrollIntoView({ behavior: "smooth" })
         this.animateSlugPrev()
         this.setPrevProject()
         var array = document.querySelectorAll(".project")
@@ -169,6 +170,7 @@ export default {
           }
         })
       } else {
+        document.documentElement.scrollIntoView({ behavior: "smooth" })
         this.animateProjectClose()
         this.$router.push("/")
       }
@@ -178,6 +180,7 @@ export default {
         this.animateNext()
         this.setNextProject()
       } else {
+        document.documentElement.scrollIntoView({ behavior: "smooth" })
         this.animateSlugNext()
         this.setNextProject()
         var array = document.querySelectorAll(".project")
