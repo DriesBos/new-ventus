@@ -1,8 +1,13 @@
 <template>
   <div v-editable="story.content" class="page page-Project_Slug">
     <div class="section-NavViewer_Title">
+      <template v-if="story.tag_list">
+        <div v-for="tag in story.tag_list" :id="tag" :key="tag">
+          <p>{{ tag }}</p>
+        </div>
+      </template>
+      <p v-else>Project</p>
       <h1>{{ story.content.title }}</h1>
-      <!-- <h2>ABOUT US</h2> -->
     </div>
     <component
       :is="blok.component | dashify"
@@ -55,7 +60,7 @@ export default {
     }
   },
   mounted() {
-    // console.log(this.story.content, "PROJECT CONTENT")
+    console.log(this.story, "PROJECT CONTENT")
   }
 }
 </script>

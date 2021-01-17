@@ -1,9 +1,8 @@
 <template>
   <section class="section section-NavViewer">
     <div v-if="$route.name === 'index'" class="section-NavViewer_Title">
+      <p>Film Production Studio</p>
       <h1>NEW VENTUS</h1>
-      <h1>FILM PRODUCTION</h1>
-      <!-- <h2>ABOUT US</h2> -->
     </div>
     <ul class="section-NavViewer_VideoContainer">
       <li
@@ -719,6 +718,11 @@ export default {
       h2
         font-size: 1.25rem
         line-height: 1.25
+      p
+        font-size: 1.25rem
+        line-height: 1.33em
+        font-family: 'Presicav', sans-serif
+        text-transform: uppercase
     &_VideoContainer
       position: relative
       width: 100%
