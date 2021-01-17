@@ -1,7 +1,15 @@
 <template>
-  <div class="about-Toggle" @click="emitClicked()">
-    <p v-if="aboutProp">close</p>
-    <p v-else>about</p>
+  <div class="about-Toggle">
+    <p v-if="aboutProp" title="close about" @click="emitClicked()">close</p>
+    <p v-else title="open about" @click="emitClicked()">about</p>
+    <a
+      v-if="!aboutProp"
+      href="mailto:film@newventus.nl?subject=Konichiwa!"
+      target="_blank"
+      title="mail"
+      >mail</a
+    >
+    <a v-if="!aboutProp" href="tel:+31648591921" title="call">call</a>
   </div>
 </template>
 
@@ -27,14 +35,31 @@ export default {
     position: fixed
     top: 0
     right: 0
+    display: flex
+    flex-direction: column
+    align-items: flex-end
     cursor: pointer
     pointer-events: auto
     mix-blend-mode: difference
     z-index: $about
-    p
+    padding-top: 1rem
+    padding-right: 1rem
+    p, a
+      position: relative
       font-size: 1.25rem
-      line-height: 2em
-      padding: 1em
+      line-height: 1.33em
       font-family: 'Presicav', sans-serif
       text-transform: uppercase
+      text-decoration: none
+      text-align: right
+      display: inline
+      &:hover
+        &::after
+          position: absolute
+          bottom: 0
+          left: 0
+          width: 100%
+          height: 2px
+          background: white
+          content: ''
 </style>
