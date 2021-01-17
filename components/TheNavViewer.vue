@@ -57,12 +57,12 @@
             v-if="$route.name === 'projects-slug' && !fullscreen"
             @click="toggleFullscreen"
           >
-            fullscreen
+            watch fullscreen
           </p>
         </transition>
         <transition name="navControls">
           <p v-if="fullscreen" @click="toggleFullscreen">
-            close
+            close fullscreen
           </p>
         </transition>
       </div>
