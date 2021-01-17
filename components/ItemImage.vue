@@ -1,6 +1,9 @@
 <template>
   <section v-editable="blok" class="item item-Image">
-    <div class="item_Container item-Image_Container" :class="blok.size">
+    <div
+      class="item_Container item-Image_Container"
+      :class="[blok.size, blok.alignment]"
+    >
       <div class="item_Single item-Image_Single">
         <img
           v-lazy="`${transformImage(blok.image.filename, '1440x0')}`"

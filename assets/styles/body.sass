@@ -80,7 +80,7 @@ header
     &_Container
       display: flex
       &.small
-        justify-content: flex-end
+        justify-content: center
         .item-Image_Single
           width: 20vw
           @media screen and ( max-width: $breakpoint-tablet)
@@ -98,7 +98,7 @@ header
           @media screen and ( max-width: $breakpoint-mobile)
             width: 75vw
       &.large
-        justify-content: flex-end
+        justify-content: center
         .item-Image_Single
           width: 80vw
           @media screen and ( max-width: $breakpoint-mobile)
@@ -106,6 +106,12 @@ header
       &.full
         .item-Image_Single
           width: 100%
+      &.left
+        justify-content: flex-start
+      &.center
+        justify-content: center
+      &.right
+        justify-content: flex-end
   // Text items
   &-NonImage
     margin-top: var(--spacing-vertical)
