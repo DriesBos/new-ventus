@@ -121,12 +121,15 @@ export default {
   methods: {
     toggleFullscreen() {
       this.fullscreen = !this.fullscreen
+      document.documentElement.scrollIntoView({ behavior: "smooth" })
       this.animateProjectFullscreen()
       var el = document.body.querySelector('.project[data-project="2"] iframe')
       if (this.fullscreen) {
         el.src = el.src.slice(0, -1) + "0"
+        document.body.classList.add("noscroll")
       } else {
         el.src = el.src.slice(0, -1) + "1"
+        document.body.classList.remove("noscroll")
       }
     },
     keyBindings(event) {
