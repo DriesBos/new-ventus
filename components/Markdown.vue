@@ -41,6 +41,17 @@ export default {
 .markdown p
   white-space: pre-line
   margin-bottom: $lineheight-p
+  a, a:hover
+    position: relative
+    text-decoration: none
+    &:before
+      content: ''
+      position: absolute
+      left: 0
+      bottom: 0
+      right: 0
+      height: 2px
+      background: currentColor
   &:last-child
     margin-bottom: 0
 // Prefer style handling by cascading css (typography.sass) as much as possible.
