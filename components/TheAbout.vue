@@ -1,8 +1,9 @@
 <template>
-  <div
-    class="about-Container"
-    style="background-image: url('https://a.storyblok.com/f/98100/400x711/70e51c4c73/luuk-bw.gif')"
-  >
+  <div class="about-Container">
+    <div
+      class="about-BackgroundImage"
+      style="background-image: url('https://a.storyblok.com/f/98100/400x711/70e51c4c73/luuk-bw.gif')"
+    ></div>
     <div class="about-Content">
       <component
         :is="blok.component | dashify"
@@ -44,6 +45,9 @@ export default {
     toggleAbout() {
       var container = document.querySelector(".about-Container")
       var aboutContent = document.querySelector(".about-Content")
+      var aboutBackgroundImage = document.querySelector(
+        ".about-BackgroundImage"
+      )
       console.log("PROP", this.aboutProp)
       if (this.aboutProp) {
         gsap.to(container, {
@@ -60,6 +64,13 @@ export default {
           duration: 0.5,
           delay: 0.5
         })
+        gsap.to(aboutBackgroundImage, {
+          opacity: 1,
+          display: "block",
+          ease: this.animationEase,
+          duration: 0.5,
+          delay: 0.5
+        })
       } else {
         gsap.to(container, {
           ease: this.animationEase,
@@ -71,6 +82,12 @@ export default {
         })
         gsap.to(aboutContent, {
           opacity: 0,
+          ease: this.animationEase,
+          duration: this.animationDuration / 4
+        })
+        gsap.to(aboutBackgroundImage, {
+          opacity: 0,
+          display: "none",
           ease: this.animationEase,
           duration: this.animationDuration / 4
         })
@@ -91,15 +108,23 @@ export default {
     background: $bg-about
     overflow-y: auto
     z-index: $about
-    // background-image: url('@assets/images/luuk-bw.gif')
-    background-repeat: no-repeat
-    background-size: contain
-    background-position: center center
     section:first-of-type, section:last-of-type
       margin-top: 0
       padding-top: 4.5rem
       margin-bottom: 0
       padding-bottom: 4.5rem
+  &-BackgroundImage
+    opacity: 0
+    display: none
+    position: fixed
+    left: 0
+    top: 0
+    width: 100%
+    height: 100%
+    background-repeat: no-repeat
+    background-size: contain
+    background-position: center center
+    pointer-events: 0
     img
       position: absolute
       left: 0
@@ -109,4 +134,5 @@ export default {
       object-fit: contain
   &-Content
     position: relative
+    opacity: 0
 </style>
