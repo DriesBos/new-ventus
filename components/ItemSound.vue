@@ -1,9 +1,9 @@
 <template>
-  <section v-editable="blok" class="item item-Image item-Sound">
+  <section v-editable="blok" class="item item-NonImage item-Sound">
     <div
-      class="item_Container item-Image_Container item-Sound_Container medium"
+      class="item_Container item-NonImage_Container item-Sound_Container medium"
     >
-      <div class="item_Single item-Image_Single item-Sound_Single">
+      <div class="item_Single item-NonImage_Single item-Sound_Single">
         <audio id="audioPlayer" preload="auto" loop>
           <source :src="blok.file.filename" type="audio/mpeg" />
           Your browser does not support the <code>audio</code> element.
@@ -112,12 +112,14 @@ export default {
   &-Sound
     position: relative
     bottom: 0
+    color: white
     &_Single
       position: relative
-      display: flex
+      display: inline-flex
       align-items: center
-      padding-left: 2.5rem
-      padding-bottom: 1rem
+      justify-content: flex-start
+      padding-bottom: 1.25rem
+      border-bottom: 1px solid currentColor
       p
         display: inline
         margin-left: .5rem
