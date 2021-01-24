@@ -4,30 +4,32 @@
       class="item_Container item-NonImage_Container item-Sound_Container medium"
     >
       <div class="item_Single item-NonImage_Single item-Sound_Single">
-        <audio id="audioPlayer" preload="auto" loop>
-          <source :src="blok.file.filename" type="audio/mpeg" />
-          Your browser does not support the <code>audio</code> element.
-        </audio>
-        <div
-          id="audioPlayButton"
-          class="item-AudioPlayer_Button"
-          @click="pressAudio()"
-        >
+        <div class="item-Sound_Wrapper">
+          <audio id="audioPlayer" preload="auto" loop>
+            <source :src="blok.file.filename" type="audio/mpeg" />
+            Your browser does not support the <code>audio</code> element.
+          </audio>
           <div
-            v-if="audio === 'stopped' || audio === 'paused'"
-            class="icon icon-Audio"
-            v-html="require('~/assets/images/icon-play.svg?include')"
-          />
-          <div
-            v-else
-            class="icon icon-Audio"
-            v-html="require('~/assets/images/icon-stop.svg?include')"
-          />
+            id="audioPlayButton"
+            class="item-AudioPlayer_Button"
+            @click="pressAudio()"
+          >
+            <div
+              v-if="audio === 'stopped' || audio === 'paused'"
+              class="icon icon-Audio"
+              v-html="require('~/assets/images/icon-play.svg?include')"
+            />
+            <div
+              v-else
+              class="icon icon-Audio"
+              v-html="require('~/assets/images/icon-stop.svg?include')"
+            />
+          </div>
+          <p @click="pressAudio()">
+            <span v-if="audio === 'stopped' || audio === 'paused'">Play</span
+            ><span v-if="audio === 'playing'">Stop</span> soundscape
+          </p>
         </div>
-        <p @click="pressAudio()">
-          <span v-if="audio === 'stopped' || audio === 'paused'">Play</span
-          ><span v-if="audio === 'playing'">Stop</span> soundscape
-        </p>
       </div>
     </div>
   </section>
@@ -114,12 +116,6 @@ export default {
     bottom: 0
     color: white
     &_Single
-      position: relative
-      display: inline-flex
-      align-items: center
-      justify-content: flex-start
-      padding-bottom: 1.25rem
-      border-bottom: 1px solid currentColor
       p
         display: inline
         margin-left: .5rem
@@ -131,4 +127,10 @@ export default {
         cursor: pointer
         img
           height: 100%
+    &_Wrapper
+      display: inline-flex
+      position: relative
+      align-items: center
+      padding-bottom: 1.25rem
+      border-bottom: 1px solid currentColor
 </style>
