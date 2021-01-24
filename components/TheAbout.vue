@@ -1,5 +1,8 @@
 <template>
-  <div class="about-Container">
+  <div
+    class="about-Container"
+    style="background-image: url('https://a.storyblok.com/f/98100/400x711/70e51c4c73/luuk-bw.gif')"
+  >
     <div class="about-Content">
       <component
         :is="blok.component | dashify"
@@ -88,4 +91,22 @@ export default {
     background: $bg-about
     overflow-y: auto
     z-index: $about
+    // background-image: url('@assets/images/luuk-bw.gif')
+    background-repeat: no-repeat
+    background-size: contain
+    background-position: center center
+    section:first-of-type, section:last-of-type
+      margin-top: 0
+      padding-top: 4.5rem
+      margin-bottom: 0
+      padding-bottom: 4.5rem
+    img
+      position: absolute
+      left: 0
+      top: 0
+      width: 100%
+      height: 100%
+      object-fit: contain
+  &-Content
+    position: relative
 </style>
