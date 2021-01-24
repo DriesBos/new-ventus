@@ -58,24 +58,6 @@ export default {
     return {
       title: this.story.name + " — NEW VENTUS"
     }
-  },
-  mounted() {
-    // console.log(this.story, "PROJECT CONTENT")
   }
 }
 </script>
-
-<style lang="sass">
-.slug
-  &-Title
-    position: relative
-    font-size: 4rem
-    z-index: $titles
-    margin-top: var(--spacing-vertical)
-    margin-bottom: var(--spacing-vertical)
-    padding-left: 20vw
-    h1
-      -webkit-text-stroke: 2px $black
-      text-transform: uppercase
-      line-height: 1.25
-</style>
