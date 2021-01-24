@@ -1,12 +1,13 @@
 <template>
   <div class="about-Container">
-    <component
-      :is="blok.component | dashify"
-      v-for="blok in about[0].content.body"
-      :key="blok._uid"
-      :blok="blok"
-      class="about-Content"
-    ></component>
+    <div class="about-Content">
+      <component
+        :is="blok.component | dashify"
+        v-for="blok in about[0].content.body"
+        :key="blok._uid"
+        :blok="blok"
+      ></component>
+    </div>
   </div>
 </template>
 
@@ -87,11 +88,4 @@ export default {
     background: $bg-about
     overflow-y: auto
     z-index: $about
-  &-Content
-    position: absolute
-    top: 0
-    right: 0
-    width: 100%
-    height: 100%
-    opacity: 0
 </style>
