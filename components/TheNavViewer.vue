@@ -714,7 +714,7 @@ export default {
     background-color: white
     transition: background-color .33s ease-in
     &_Title
-      position: fixed
+      position: absolute
       left: 1rem
       top: 1rem
       z-index: $titles
@@ -729,7 +729,7 @@ export default {
         line-height: 1.25em
         font-family: 'Presicav', sans-serif
         text-transform: uppercase
-        margin-bottom: 2rem
+        margin-bottom: 1vh
     &_VideoContainer
       position: relative
       width: 100%
