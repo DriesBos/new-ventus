@@ -1,13 +1,13 @@
 <template>
   <div class="fullscreenEnabled about-Toggle">
-    <!-- <a
-      v-if="!aboutProp"
+    <a
+      v-if="aboutProp"
       href="mailto:film@newventus.nl?subject=Konichiwa!"
       target="_blank"
       title="mail"
       >mail</a
     >
-    <a v-if="!aboutProp" href="tel:+31648591921" title="call">call</a> -->
+    <a v-if="aboutProp" href="tel:+31648591921" title="call">call</a>
     <p v-if="aboutProp" title="close about" @click="emitClicked()">close</p>
     <p v-else title="open about" @click="emitClicked()">about</p>
   </div>

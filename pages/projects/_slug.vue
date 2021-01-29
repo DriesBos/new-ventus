@@ -84,7 +84,8 @@ export default {
   position: absolute
   top: calc(100vh - 1.25rem)
   left: calc(20vw + 1.25rem)
-  left: 60vw
+  // right: 1.25rem
+  // left: 60vw
   transform: translateY(-100%)
   svg
     fill: none
