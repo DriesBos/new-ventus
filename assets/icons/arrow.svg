@@ -1,0 +1,16 @@
+<svg width="25" height="50" viewBox="0 0 25 50" fill="none"
+  xmlns="http://www.w3.org/2000/svg">
+  <g clip-path="url(#clip0)">
+    <g clip-path="url(#clip1)">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M13.498-.02v46.198l9.59-9.602L24.5 37.99 13.91 48.591l.002.001L12.506 50l-.002-.002V50l-1.412-1.413v-.002L.511 37.989l1.406-1.407 9.584 9.596V-.02h1.997z" fill="#fff"/>
+    </g>
+  </g>
+  <defs>
+    <clipPath id="clip0">
+      <path fill="#fff" d="M0 0h25v50H0z"/>
+    </clipPath>
+    <clipPath id="clip1">
+      <path fill="#fff" transform="rotate(-180 12.5 25)" d="M0 0h25v50H0z"/>
+    </clipPath>
+  </defs>
+</svg>

@@ -9,6 +9,12 @@
       <p v-else class="fullscreenEnabled">Project</p>
       <h1>{{ story.content.title }}</h1>
     </div>
+    <div class="page-Project_ScrollDown">
+      <div
+        class="icon icon-Down"
+        v-html="require('~/assets/icons/arrow.svg?include')"
+      />
+    </div>
     <component
       :is="blok.component | dashify"
       v-for="blok in story.content.body"
@@ -61,3 +67,13 @@ export default {
   }
 }
 </script>
+
+<style lang="sass">
+.page-Project_ScrollDown, .test
+  position: absolute
+  top: calc(100vh - 1.25rem)
+  left: calc(20vw + 1.25rem)
+  transform: translateY(-100%)
+  svg
+    fill: none
+</style>
