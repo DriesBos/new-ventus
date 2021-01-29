@@ -38,7 +38,7 @@ export default {
 </script>
 
 <style lang="sass">
-.markdown p
+.markdown
   white-space: pre-line
   margin-bottom: $lineheight-p
   a, a:hover
@@ -50,7 +50,7 @@ export default {
       left: 0
       bottom: 0
       right: 0
-      height: 2px
+      height: 1px
       background: currentColor
   &:last-child
     margin-bottom: 0

@@ -37,7 +37,14 @@ export default {
           line-height: $lineheight-data
         a
           text-decoration: none
-          border-bottom: 1px solid currentColor
+          &:before
+            content: ''
+            position: absolute
+            left: 0
+            bottom: 0
+            right: 0
+            height: 1px
+            background: currentColor
       &:first-of-type
         border-top: 1px solid currentColor
       &:last-of-type
