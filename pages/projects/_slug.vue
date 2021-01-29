@@ -9,7 +9,7 @@
       <p v-else class="fullscreenEnabled">Project</p>
       <h1>{{ story.content.title }}</h1>
     </div>
-    <div class="page-Project_ScrollDown">
+    <div class="page-Project_ScrollDown" @click="scrollDown">
       <div
         class="icon icon-Down"
         v-html="require('~/assets/icons/arrow.svg?include')"
@@ -64,12 +64,23 @@ export default {
     return {
       title: this.story.name + " — NEW VENTUS"
     }
+  },
+  methods: {
+    scrollDown() {
+      var position = window.innerHeight
+      window.scrollTo({
+        top: position,
+        behavior: "smooth"
+      })
+    }
   }
 }
 </script>
 
 <style lang="sass">
-.page-Project_ScrollDown, .test
+.page-Project_ScrollDown
+  z-index: 999
+  cursor: pointer
   position: absolute
   top: calc(100vh - 1.25rem)
   left: calc(20vw + 1.25rem)
