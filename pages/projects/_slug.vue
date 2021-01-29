@@ -82,8 +82,9 @@ export default {
   z-index: 999
   cursor: pointer
   position: absolute
-  top: calc(100vh)
+  top: calc(100vh - 2.75rem)
   left: calc(20vw + 1.25rem)
+  left: calc(20vw + 5rem)
   // right: 1.25rem
   // left: 60vw
   transform: translateY(-100%)
