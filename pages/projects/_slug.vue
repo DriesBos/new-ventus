@@ -7,7 +7,7 @@
         </div>
       </template>
       <p v-else class="fullscreenEnabled">Project</p>
-      <h1>{{ story.content.title }}</h1>
+      <h1 class="fullscreenEnabled">{{ story.content.title }}</h1>
     </div>
     <div class="page-Project_ScrollDown" @click="scrollDown">
       <div
@@ -82,12 +82,9 @@ export default {
   z-index: 999
   cursor: pointer
   position: absolute
-  top: calc(100vh - 2.75rem)
-  left: calc(20vw + 1.25rem)
-  left: calc(20vw + 5rem)
-  // right: 1.25rem
-  // left: 60vw
-  transform: translateY(-100%)
+  bottom: calc(((100vh - 30vw)/2) / 2)
+  left: calc(20vw + 4.86rem)
+  transform: translate(-50%, 50%)
   svg
     fill: none
 </style>

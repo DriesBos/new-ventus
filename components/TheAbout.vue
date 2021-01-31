@@ -110,9 +110,9 @@ export default {
     z-index: $about
     section:first-of-type, section:last-of-type
       margin-top: 0
-      padding-top: 4.5rem
+      padding-top: 9rem
       margin-bottom: 0
-      padding-bottom: 4.5rem
+      padding-bottom: 9rem
   &-BackgroundImage
     opacity: 0
     display: none

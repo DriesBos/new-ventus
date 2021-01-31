@@ -32,6 +32,7 @@ export default {
       > div
         flex-basis: 50%
       .markdown
+        margin-bottom: 0
         p, h1, h2, h3, h4, h5, a
           font-size: $type-size-data
           line-height: $lineheight-data
