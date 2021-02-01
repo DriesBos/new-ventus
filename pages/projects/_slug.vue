@@ -9,7 +9,7 @@
       <p v-else class="fullscreenEnabled">Project</p>
       <h1 class="fullscreenEnabled">{{ story.content.title }}</h1>
     </div>
-    <div class="page-Project_ScrollDown" @click="scrollDown">
+    <div class="page-Project_ScrollDown fullscreenEnabled" @click="scrollDown">
       <div
         class="icon icon-Down"
         v-html="require('~/assets/icons/arrow.svg?include')"
