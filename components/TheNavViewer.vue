@@ -692,7 +692,6 @@ export default {
     },
     resetList() {
       this.list = [...this.projects]
-      // this.sortByDate(this.list)
     },
     sortByDate(values) {
       values.sort((a, b) =>

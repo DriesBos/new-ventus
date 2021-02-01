@@ -2,7 +2,7 @@
   <!-- prettier-ignore -->
   <div class="player-Container" :data-ratio="blok.aspect_ratio">
     <iframe
-      :src="'https://player.vimeo.com/video/' + blok.video_id + '?loop=1&autoplay=1&autopause=0&muted=' + muted"
+      :src="'https://player.vimeo.com/video/' + blok.video_id + '?loop=1&transparent=1&autoplay=1&autopause=0&muted=' + muted"
       frameborder="0"
       allow="autoplay"
       transparent="true"
