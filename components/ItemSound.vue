@@ -4,7 +4,7 @@
       class="item_Container item-NonImage_Container item-Sound_Container medium"
     >
       <div class="item_Single item-NonImage_Single item-Sound_Single">
-        <div class="item-Sound_Wrapper">
+        <div class="item-Sound_Wrapper" :class="audio">
           <audio id="audioPlayer" preload="auto" loop>
             <source :src="blok.file.filename" type="audio/mpeg" />
             Your browser does not support the <code>audio</code> element.
@@ -64,36 +64,36 @@ export default {
     onScroll() {
       var el = document.querySelector(".item-Sound")
       this.offsetTop = window.pageYOffset || document.documentElement.scrollTop
+      // var target = document.querySelector(".item-Sound_Wrapper")
       if (
         el.offsetTop - window.innerHeight / 2 < this.offsetTop &&
         this.controlsUsed == false
       ) {
         this.audio = "stopped"
         this.playAudio()
+        // gsap.to(target, {
+        //   ease: "ease",
+        //   duration: 0.33,
+        //   minWidth: "100%",
+        //   delay: 0
+        // })
       } else if (
         el.offsetTop - window.innerHeight / 2 > this.offsetTop &&
         this.controlsUsed == false
       ) {
         this.audio = "playing"
         this.playAudio()
+        // gsap.to(target, {
+        //   ease: "ease",
+        //   duration: 0.33,
+        //   minWidth: "0%",
+        //   delay: 0
+        // })
       }
     },
     pressAudio() {
       this.controlsUsed = true
       this.playAudio()
-    },
-    stickyWhenVisible() {
-      var target = document.querySelector(".item-Sound")
-      gsap.to(target, {
-        position: "fixed",
-        ease: "none",
-        scrollTrigger: {
-          trigger: target,
-          // scrub: true,
-          start: "bottom bottom"
-          // end: "bottom top"
-        }
-      })
     },
     playAudio() {
       var audio = document.getElementById("audioPlayer")
@@ -131,6 +131,19 @@ export default {
       display: inline-flex
       position: relative
       align-items: center
-      padding-bottom: 1.25rem
-      border-bottom: 1px solid currentColor
+      padding-bottom: .65rem
+      width: auto
+      &::before
+        content: ''
+        position: absolute
+        left: 0
+        bottom: 0
+        background: white
+        width: 100%
+        max-width: 0%
+        height: 1px
+        transition: max-width .165s ease-in-out
+      &.playing
+        &::before
+          max-width: 100%
 </style>
