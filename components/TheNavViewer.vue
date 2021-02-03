@@ -126,10 +126,12 @@ export default {
   methods: {
     checkMobile() {
       const mq = window.matchMedia("(max-width: 768px)")
-      if (mq.matches === true) {
-        this.mobile = true
-      } else {
-        this.mobile = false
+      if (this.$route.name === "index") {
+        if (mq.matches === true) {
+          this.mobile = true
+        } else {
+          this.mobile = false
+        }
       }
     },
     checkMobileOnResize() {
