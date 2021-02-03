@@ -93,6 +93,7 @@ export default {
     return {
       direction: null,
       list: {},
+      mobile: false,
       fullscreen: false,
       animationDuration: 1,
       animationEase: "Power4.easeInOut"
@@ -104,6 +105,7 @@ export default {
     })
   },
   mounted() {
+    this.checkMobile()
     // INIT
     this.resetList()
     this.initProjectNumbers()
@@ -120,6 +122,14 @@ export default {
     window.removeEventListener("resize", this.setAnimateStart)
   },
   methods: {
+    checkMobile() {
+      const mq = window.matchMedia("(max-width: 768px)")
+      if (mq.matches === true) {
+        this.mobile = true
+      } else {
+        this.mobile = false
+      }
+    },
     toggleFullscreen() {
       this.fullscreen = !this.fullscreen
       document.documentElement.scrollIntoView({ behavior: "smooth" })
@@ -145,8 +155,11 @@ export default {
       }
     },
     clickPrevProject() {
-      if (this.$route.name === "index") {
+      if (this.$route.name === "index" && this.mobile === false) {
         this.animatePrev()
+        this.setPrevProject()
+      } else if (this.$route.name === "index" && this.mobile === true) {
+        this.animateSlugPrev()
         this.setPrevProject()
       } else {
         document.documentElement.scrollIntoView({ behavior: "smooth" })
@@ -176,8 +189,11 @@ export default {
       }
     },
     clickNextProject() {
-      if (this.$route.name === "index") {
+      if (this.$route.name === "index" && this.mobile === false) {
         this.animateNext()
+        this.setNextProject()
+      } else if (this.$route.name === "index" && this.mobile === true) {
+        this.animateSlugNext()
         this.setNextProject()
       } else {
         document.documentElement.scrollIntoView({ behavior: "smooth" })
@@ -266,33 +282,35 @@ export default {
       var width = window.innerWidth
       var height = window.innerHeight
       var array = document.querySelectorAll(".project")
-      array.forEach(el => {
-        if (el.dataset.project === "2") {
-          gsap.set(el, {
-            opacity: 1
-          })
-          gsap.to(el, {
-            ease: this.animationEase,
-            duration: this.animationDuration,
-            left: "20vw",
-            top: (height - width * 0.3) / 2,
-            width: "60vw",
-            height: "30vw"
-          })
-        } else if (el.dataset.project === "3") {
-          gsap.set(el, {
-            opacity: 1
-          })
-          gsap.to(el, {
-            ease: this.animationEase,
-            duration: this.animationDuration,
-            left: "80vw",
-            top: 0,
-            width: "20vw",
-            height: (height - width * 0.3) / 2
-          })
-        }
-      })
+      if (this.mobile === false) {
+        array.forEach(el => {
+          if (el.dataset.project === "2") {
+            gsap.set(el, {
+              opacity: 1
+            })
+            gsap.to(el, {
+              ease: this.animationEase,
+              duration: this.animationDuration,
+              left: "20vw",
+              top: (height - width * 0.3) / 2,
+              width: "60vw",
+              height: "30vw"
+            })
+          } else if (el.dataset.project === "3") {
+            gsap.set(el, {
+              opacity: 1
+            })
+            gsap.to(el, {
+              ease: this.animationEase,
+              duration: this.animationDuration,
+              left: "80vw",
+              top: 0,
+              width: "20vw",
+              height: (height - width * 0.3) / 2
+            })
+          }
+        })
+      }
     },
     animatePrev() {
       var width = window.innerWidth
@@ -604,7 +622,7 @@ export default {
       var width = window.innerWidth
       var height = window.innerHeight
       this.fullscreen = false
-      if (this.$route.name === "index") {
+      if (this.$route.name === "index" && this.mobile === false) {
         setTimeout(function() {
           var array = document.querySelectorAll(".project")
           array.forEach(el => {
@@ -752,6 +770,11 @@ export default {
       left: 20vw
       width: 60vw
       height: 30vw
+      @media screen and ( max-width: $breakpoint-mobile)
+        top: 0
+        left: 20vw
+        width: 80vw
+        height: calc(100vh - ((100vh - 30vw) / 2))
       &[data-page="projects-slug"]
         top: 0
         left: 20vw
@@ -767,6 +790,8 @@ export default {
       right: 0
       width: 20vw
       height: calc((100vh - 30vw)/2)
+      @media screen and ( max-width: $breakpoint-mobile)
+        display: none
       &[data-page="projects-slug"]
         display: none
 
