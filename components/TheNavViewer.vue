@@ -63,7 +63,7 @@
         <p v-if="fullscreen">&nbsp;</p>
         <transition name="navControls">
           <p v-if="fullscreen" @click="toggleFullscreen">
-            <span class="mobile">close</span> fullscreen
+            close fullscreen
           </p>
         </transition>
       </div>
@@ -725,8 +725,7 @@ export default {
   &-NavViewer
     position: relative
     width: 100%
-    height: 100vh
-    // overflow: hidden
+    overflow: hidden
     z-index: $slider
     background-color: white
     transition: background-color .33s ease-in
