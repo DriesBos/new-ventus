@@ -82,9 +82,13 @@ export default {
   z-index: 999
   cursor: pointer
   position: absolute
-  bottom: calc(((100vh - 30vw)/2) / 2)
+  top: calc(100vh - (((100vh - 30vw)/2) / 2))
   left: calc(20vw + 4.86rem)
-  transform: translate(-50%, 50%)
+  transform: translate(-50%, -50%)
+  @media screen and ( max-width: $breakpoint-mobile)
+    top: calc(100vh - 1.25rem)
+    left: 50%
+    transform: translate(-50%, -100%)
   svg
     fill: none
 </style>

@@ -47,7 +47,7 @@ export default {
     mix-blend-mode: difference
     z-index: $about
     padding-top: 1rem
-    padding-bottom: 1rem
+    padding-bottom: 1.25rem
     @media screen and ( max-width: $breakpoint-mobile)
       top: auto
       bottom: 0
