@@ -41,7 +41,7 @@
       <div class="controls-Row">
         <transition name="navControls">
           <p v-if="$route.name === 'index'" @click="clickCenterProject">
-            open project
+            open <span class="mobile">project</span>
           </p>
         </transition>
         <transition name="navControls">
@@ -49,7 +49,7 @@
             v-if="$route.name === 'projects-slug' && !fullscreen"
             @click="clickCenterProject"
           >
-            close project
+            close <span class="mobile">project</span>
           </p>
         </transition>
         <transition name="navControls">
@@ -57,13 +57,13 @@
             v-if="$route.name === 'projects-slug' && !fullscreen"
             @click="toggleFullscreen"
           >
-            watch fullscreen
+            <span class="mobile">watch</span> fullscreen
           </p>
         </transition>
         <p v-if="fullscreen">&nbsp;</p>
         <transition name="navControls">
           <p v-if="fullscreen" @click="toggleFullscreen">
-            close fullscreen
+            <span class="mobile">close</span> fullscreen
           </p>
         </transition>
       </div>
@@ -708,7 +708,7 @@ export default {
     position: relative
     width: 100%
     height: 100vh
-    overflow: hidden
+    // overflow: hidden
     z-index: $slider
     background-color: white
     transition: background-color .33s ease-in
@@ -723,16 +723,20 @@ export default {
       h1
         font-size: 4rem
         line-height: 1.25
+        @media screen and ( max-width: $breakpoint-mobile)
+          font-size: 10vw
       p
         font-size: 1.25rem
         line-height: 1.25em
         font-family: 'Presicav', sans-serif
         text-transform: uppercase
         margin-bottom: 1vh
+        @media screen and ( max-width: $breakpoint-mobile)
+          font-size: 4vw
     &_VideoContainer
       position: relative
       width: 100%
-      height: 100%
+      height: 100vh
     &_Nav
       position: absolute
       z-index: $slider-controls

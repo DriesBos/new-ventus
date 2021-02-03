@@ -61,15 +61,18 @@ export default {
       text-align: right
       display: inline
       margin-right: 1.66rem
+      @media screen and ( max-width: $breakpoint-mobile)
+        font-size: 4vw
       &:hover
         &::after
-          position: absolute
-          bottom: 0
-          left: 0
-          width: 100%
-          height: 2px
-          background: white
-          content: ''
+          @media screen and ( hover: hover)
+            position: absolute
+            bottom: 0
+            left: 0
+            width: 100%
+            height: 2px
+            background: white
+            content: ''
     a:last-child
       margin-right: 1rem
 </style>
