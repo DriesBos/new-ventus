@@ -2,7 +2,7 @@
   <div class="about-Container">
     <div
       class="about-BackgroundImage"
-      style="background-image: url('https://a.storyblok.com/f/98100/400x711/70e51c4c73/luuk-bw.gif')"
+      style="background-image: url('https://a.storyblok.com/f/98100/400x720/135c1f3138/gif-final.gif')"
     ></div>
     <div class="about-Content">
       <component
