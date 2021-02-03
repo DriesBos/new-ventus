@@ -125,6 +125,8 @@ export default {
     background-size: contain
     background-position: center center
     pointer-events: 0
+    @media screen and ( max-width: $breakpoint-mobile)
+      background-size: cover
     img
       position: absolute
       left: 0
