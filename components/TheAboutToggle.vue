@@ -44,7 +44,7 @@ export default {
     align-items: flex-end
     cursor: pointer
     pointer-events: auto
-    mix-blend-mode: difference
+    // mix-blend-mode: difference
     z-index: $about
     padding-top: 1rem
     padding-bottom: 1.25rem
@@ -53,6 +53,7 @@ export default {
       bottom: 0
     p, a
       position: relative
+      color: white
       font-size: 1.25rem
       line-height: 1.33em
       font-family: 'Presicav', sans-serif
