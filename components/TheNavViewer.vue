@@ -112,6 +112,7 @@ export default {
     this.setAnimateStart()
     // INIT ON RESIZE
     this.handleDebouncedResize = lodash.debounce(this.setAnimateStart, 50)
+    this.handleDebouncedResize = lodash.debounce(this.checkMobileOnResize, 50)
     window.addEventListener("resize", this.handleDebouncedResize)
     // KEYBINDINGS
     document.addEventListener("keydown", this.keyBindings)
@@ -120,6 +121,7 @@ export default {
   updated() {},
   destroyed() {
     window.removeEventListener("resize", this.setAnimateStart)
+    window.removeEventListener("resize", this.checkMobileOnResize)
   },
   methods: {
     checkMobile() {
@@ -128,6 +130,15 @@ export default {
         this.mobile = true
       } else {
         this.mobile = false
+      }
+    },
+    checkMobileOnResize() {
+      const mq = window.matchMedia("(max-width: 768px)")
+      if (
+        (mq.matches === true && this.mobile === false) ||
+        (mq.matches === false && this.mobile === true)
+      ) {
+        location.reload()
       }
     },
     toggleFullscreen() {
