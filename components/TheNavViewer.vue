@@ -814,6 +814,8 @@ export default {
   cursor: pointer
   overflow: hidden
   transition: filter 1s ease
+  .player-Container
+    overflow: visible
   iframe
     height: 1000%
     width: 100%
