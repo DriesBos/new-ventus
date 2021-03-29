@@ -54,43 +54,43 @@ export default {
   },
   mounted() {
     console.log(this.blok, "SOUND ITEM")
-    window.addEventListener("scroll", this.onScroll)
+    // window.addEventListener("scroll", this.onScroll)
     // this.stickyWhenVisible()
   },
   destroyed() {
-    window.removeEventListener("scroll", this.onScroll)
+    // window.removeEventListener("scroll", this.onScroll)
   },
   methods: {
-    onScroll() {
-      var el = document.querySelector(".item-Sound")
-      this.offsetTop = window.pageYOffset || document.documentElement.scrollTop
-      // var target = document.querySelector(".item-Sound_Wrapper")
-      if (
-        el.offsetTop - window.innerHeight / 2 < this.offsetTop &&
-        this.controlsUsed == false
-      ) {
-        this.audio = "stopped"
-        this.playAudio()
-        // gsap.to(target, {
-        //   ease: "ease",
-        //   duration: 0.33,
-        //   minWidth: "100%",
-        //   delay: 0
-        // })
-      } else if (
-        el.offsetTop - window.innerHeight / 2 > this.offsetTop &&
-        this.controlsUsed == false
-      ) {
-        this.audio = "playing"
-        this.playAudio()
-        // gsap.to(target, {
-        //   ease: "ease",
-        //   duration: 0.33,
-        //   minWidth: "0%",
-        //   delay: 0
-        // })
-      }
-    },
+    // onScroll() {
+    //   var el = document.querySelector(".item-Sound")
+    //   this.offsetTop = window.pageYOffset || document.documentElement.scrollTop
+    //   // var target = document.querySelector(".item-Sound_Wrapper")
+    //   if (
+    //     el.offsetTop - window.innerHeight / 2 < this.offsetTop &&
+    //     this.controlsUsed == false
+    //   ) {
+    //     this.audio = "stopped"
+    //     this.playAudio()
+    //     // gsap.to(target, {
+    //     //   ease: "ease",
+    //     //   duration: 0.33,
+    //     //   minWidth: "100%",
+    //     //   delay: 0
+    //     // })
+    //   } else if (
+    //     el.offsetTop - window.innerHeight / 2 > this.offsetTop &&
+    //     this.controlsUsed == false
+    //   ) {
+    //     this.audio = "playing"
+    //     this.playAudio()
+    //     // gsap.to(target, {
+    //     //   ease: "ease",
+    //     //   duration: 0.33,
+    //     //   minWidth: "0%",
+    //     //   delay: 0
+    //     // })
+    //   }
+    // },
     pressAudio() {
       this.controlsUsed = true
       this.playAudio()
