@@ -1,5 +1,5 @@
 <template>
-  <div v-editable="story.content">
+  <div v-editable="story.content" class="page-Index">
     <component
       :is="story.content.component | dashify"
       v-if="story.content.component"
@@ -10,10 +10,11 @@
 </template>
 
 <script>
+import onPageLoad from "@/mixins/onPageLoad"
 import storyblokLivePreview from "@/mixins/storyblokLivePreview"
 
 export default {
-  mixins: [storyblokLivePreview],
+  mixins: [onPageLoad, storyblokLivePreview],
   asyncData(context) {
     return context.app.$storyapi
       .get("cdn/stories/home", {
@@ -41,6 +42,11 @@ export default {
   data() {
     return {
       story: { content: {} }
+    }
+  },
+  head() {
+    return {
+      title: this.story.name + " — NEW VENTUS"
     }
   }
 }

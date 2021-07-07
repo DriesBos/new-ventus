@@ -1,17 +1,28 @@
-// @font-face
-//   font-family: ''
-//   src: url('~assets/fonts/') format('')
-//   font-weight: normal
-//   font-style: normal
-//   font-display: swap
+@font-face
+  font-family: 'GT America Regular'
+  src: url('~assets/fonts/GTAmerica-Regular.woff') format('')
+  font-weight: normal
+  font-style: normal
+
+@font-face
+  font-family: 'GT America Regular'
+  src: url('~assets/fonts/GTAmerica-Bold.woff') format('woff')
+  font-weight: bold
+  font-style: normal
+
+@font-face
+  font-family: 'Presicav'
+  src: url('~assets/fonts/PresicavRg-Regular.woff2') format('woff2')
+  font-weight: normal
+  font-style: normal
 
 // https://www.madebymike.com.au/writing/fluid-type-calc-examples/
 html
-  font-size: 16px
+  font-size: 18px
 
 @media screen and (min-width: 800px)
   html
-    font-size: calc(16px + 6 * ((100vw - 800px) / 1200))
+    font-size: calc(18px + 4 * ((100vw - 800px) / 1200))
 
 @media screen and (min-width: 2000px)
   html
@@ -22,6 +33,9 @@ h1, h2, h3, p, a
   overflow-wrap: break-word
   word-break: normal
   hyphens: auto
+  // Mix blend mode
+  color: white
+  mix-blend-mode: difference
 
 .markdown p // No broken words in regular sized text paragraphs
   word-wrap: normal
@@ -29,27 +43,61 @@ h1, h2, h3, p, a
   overflow-wrap: normal
   hyphens: none
 
-li, h1, h2, h3, p, a, a:link, a:visited, a:hover, a:active, span, input, button
-  font-family: Helvetica, Arial, sans-serif
-  font-size: 1em
+li, h1, h2, h3, h4, h5, blockquote, p, a, a:link, a:visited, a:hover, a:active, span, input, button
+  font-family: 'GT America Regular', sans-serif
   line-height: 1.5
-  color: black
   font-style: normal
   font-weight: normal
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
 
-a
-  color: black
-  text-decoration: underline
+h1, h2, h3, h4, h5
+  font-family: 'Presicav', sans serif
 
-strong
-  font-weight: bold
+.markdown
+  p, h1, h2, h3, h4, h5, blockquote, a, a:link, a:visited, a:hover, a:active, strong, em, i
+    font-family: "Times New Roman", serif
+  p
+    font-size: $type-size-p
+    line-height: $lineheight-p
+    letter-spacing: .01em
+  h1
+    font-size: $type-size-h1
+    line-height: $lineheight-h
+    letter-spacing: $letterspacing-h
+    font-weight: 500
+  h2
+    font-size: $type-size-h1
+    line-height: $lineheight-h
+    letter-spacing: $letterspacing-h
+    font-weight: 500
+  h3
+    font-size: $type-size-h2
+    line-height: $lineheight-h
+    letter-spacing: $letterspacing-h
+    font-weight: 500
+  h4
+    font-size: $type-size-h3
+    line-height: $lineheight-h
+    letter-spacing: $letterspacing-h
+    font-weight: 500
+  h5
+    font-size: $type-size-p
+    line-height: $lineheight-p
+  a
+    text-decoration: underline
+  strong
+    font-weight: bold
+  em
+    font-style: italic
+  blockquote, blockquote p
+    font-size: $type-size-h2
+  // p, h1, h2, h3, h4, h5, blockquote
+  //   margin-bottom: $lineheight
+  p
+    min-height: $lineheight-p
 
-em
-  font-style: italic
-
-.ellipsis
+.ellipsis // Limit title to one line
   overflow: hidden
   min-width: 0
   text-overflow: ellipsis
@@ -57,3 +105,11 @@ em
     white-space: nowrap
     overflow: hidden
     text-overflow: ellipsis
+
+.lineClamp // Limit excerpt to X lines
+  display: -webkit-box
+  -webkit-line-clamp: 3
+  -webkit-box-orient: vertical
+  text-overflow: ellipsis
+  overflow: hidden
+  white-space: nowrap

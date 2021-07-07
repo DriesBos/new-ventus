@@ -1,30 +1,29 @@
 const axios = require("axios")
 require("dotenv").config()
 
-// TODO: Add site title
-// TODO: Add .env secrets
+// TODO: Add site title + description
+// TODO: Add 1200x630 "image.png" to static
 // TODO: Add 512px "icon.png" to static
-// TODO: Add Google Analytics env
+// TODO: Add Google Analytics variable to buildModules
 // TODO: Add rel="noreferrer" to all links (prevents window object access)
 
-module.exports = {
-  mode: "universal",
+// Add the "Lazy" prefix in your templates to enable lazyload components
 
-  /*
-   ** Headers of the page
-   */
+module.exports = {
+  target: "static",
   head: {
-    title: "Inert Site Title", // Change in package.json files
+    title: "NEW VENTUS", // Change in package.json files
     meta: [
       { charset: "utf-8" },
       {
         name: "viewport",
-        content: "width=device-width, initial-scale=1"
+        content: "width=device-width, initial-scale=1, viewport-fit=cover"
       },
       {
         hid: "description",
         name: "description",
-        content: "Insert Site Descr" // Change in package.json files
+        content:
+          "New Ventus is here to shake up conventional filmmaking. We believe in agile filmmaking without setting boundaries when aiming for perfection. With style, fresh views and endless passion we aim to transform the unwieldy film industry by telling stories that matter, without unnecessary chitchat." // Change in package.json files
       },
       {
         name: "mobile-web-app-capable",
@@ -42,51 +41,39 @@ module.exports = {
         // Change if needed
         name: "theme-color",
         content: "#ffffff"
-      }
+      },
+      { property: "og:image", content: "/image.png" }
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
+    link: [{ rel: "icon", type: "image/png", href: "/icon.png" }]
   },
 
-  /*
-   ** Customize the progress-bar color
-   */
+  // Loading animation
   loading: false,
 
-  /*
-   ** Scroll behaviour (depreciated but new method seems buggy (app folder))
-   */
-  router: {
-    scrollBehavior: function() {
-      return { x: 0, y: 0 }
-    }
-  },
+  // Auto import components
+  components: true,
 
-  /*
-   ** Global CSS
-   */
+  // Register CSS files
   css: [
     "@/assets/styles/reset.css",
+    // "@/assets/styles/form-reset.css",
     "@/assets/styles/transitions.sass",
-    "@/assets/styles/variables.sass",
     "@/assets/styles/typography.sass",
     "@/assets/styles/body.sass"
   ],
 
-  /*
-   ** Plugins to load before mounting the App
-   */
-  plugins: ["~/plugins/components", "~/plugins/filters"],
+  // Register plugins
+  plugins: [
+    "~/plugins/components",
+    "~/plugins/filters",
+    "~/plugins/vue-lazyload"
+    // "~/plugins/vue-scrollto"
+  ],
 
-  /*
-   ** Nuxt.js modules
-   */
+  // Register modules
   modules: [
     "@nuxtjs/axios",
-    "vue-scrollto/nuxt",
-    [
-      "@bazzite/nuxt-optimized-images",
-      { optimizedImages: { optimizeImages: true, optimizeImagesInDev: true } } // Test compression by setting to true first
-    ],
+    // "vue-scrollto/nuxt",
     [
       "storyblok-nuxt",
       {
@@ -98,9 +85,8 @@ module.exports = {
       }
     ]
   ],
-  /*
-   ** Nuxt Generate
-   */
+
+  // Generate routes
   generate: {
     routes: function(callback) {
       const token = process.env.PUBLICKEY
@@ -134,11 +120,46 @@ module.exports = {
               callback(null, routes)
             })
         })
-    }
+    },
+    // Fallback to prevent Netlify from directing to its own error pages
+    fallback: true
   },
-  /*
-   ** Build configuration
-   */
+
+  // Modules only run on build
+  buildModules: [
+    [
+      "@nuxtjs/pwa",
+      {
+        icon: false // disables the icon module due dynamic favicon
+      }
+    ],
+    "@nuxtjs/dotenv",
+    "@nuxtjs/style-resources",
+    "@aceforth/nuxt-optimized-images"
+    // [
+    //   "@nuxtjs/google-analytics",
+    //   {
+    //     id: process.env.GA_ID
+    //   }
+    // ]
+  ],
+
+  // Settings for "@nuxtjs/style-resources"
+  styleResources: {
+    sass: "./assets/styles/vars/*.sass"
+  },
+
+  // Settings for "@aceforth/nuxt-optimized-images"
+  optimizedImages: {
+    optimizeImages: true
+  },
+
+  // Settings for PWA
+  pwa: {
+    icon: false
+  },
+
+  // Run on build
   build: {
     /*
      ** You can extend webpack config here
@@ -153,17 +174,12 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
+      // Fixes dotenv error
+      config.node = {
+        fs: "empty"
+      }
     },
     // Transpile GSAP for server side rendering
     transpile: ["gsap"]
-  },
-  buildModules: [
-    "@nuxtjs/pwa"
-    // [
-    //   "@nuxtjs/google-analytics",
-    //   {
-    //     id: process.env.GA_ID
-    //   }
-    // ]
-  ]
+  }
 }
