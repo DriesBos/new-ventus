@@ -4,7 +4,7 @@
     <LazyTheNavViewer />
     <nuxt />
     <LazyTheAbout :about-prop="aboutState" />
-    <LazyTheAboutToggle :about-prop="aboutState" @clicked="toggleAbout" />
+    <!-- <LazyTheAboutToggle :about-prop="aboutState" @clicked="toggleAbout" /> -->
   </main>
 </template>
 

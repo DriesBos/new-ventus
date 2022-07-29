@@ -1,9 +1,9 @@
 <template>
   <section class="section section-NavViewer">
-    <div v-if="$route.name === 'index'" class="section-NavViewer_Title">
+    <!-- <div v-if="$route.name === 'index'" class="section-NavViewer_Title">
       <p>Film Production Studio</p>
       <h1>NEW VENTUS</h1>
-    </div>
+    </div> -->
     <ul class="section-NavViewer_VideoContainer">
       <li
         v-for="(item, i) in list"
@@ -20,65 +20,93 @@
         ></component>
       </li>
     </ul>
+
     <!-- PREVIOUS -->
     <div
       :data-page="$route.name"
       :data-fullscreen="fullscreen"
       class="section-NavViewer_Nav section-NavViewer_Prev"
+      @click="clickNextProject"
     >
-      <div class="controls-Row">
+      <!-- <div class="controls-Row">
         <transition name="navControls">
-          <p v-if="!fullscreen" @click="clickNextProject">next</p>
+          <div
+            v-if="!fullscreen"
+            class="icon icon-Right"
+            @click="clickNextProject"
+            v-html="require('~/assets/icons/close.svg?include')"
+          />
         </transition>
-      </div>
+      </div> -->
     </div>
+
     <!-- CENTER -->
     <div
       :data-page="$route.name"
       :data-fullscreen="fullscreen"
       class="section-NavViewer_Nav section-NavViewer_Center"
     >
-      <div class="controls-Row">
+      <!-- if index -->
+      <div
+        v-if="$route.name === 'index'"
+        class="controls-Row"
+        @click="clickCenterProject"
+      ></div>
+
+      <!-- if project -->
+      <div
+        v-if="$route.name === 'projects-slug' && !fullscreen"
+        class="controls-Row"
+      >
         <transition name="navControls">
-          <p v-if="$route.name === 'index'" @click="clickCenterProject">
-            open <span class="mobile">project</span>
-          </p>
-        </transition>
-        <transition name="navControls">
-          <p
-            v-if="$route.name === 'projects-slug' && !fullscreen"
-            @click="clickCenterProject"
-          >
-            close <span class="mobile">project</span>
-          </p>
-        </transition>
-        <transition name="navControls">
-          <p
-            v-if="$route.name === 'projects-slug' && !fullscreen"
-            @click="toggleFullscreen"
-          >
-            <span class="mobile">watch</span> fullscreen
-          </p>
-        </transition>
-        <p v-if="fullscreen">&nbsp;</p>
-        <transition name="navControls">
-          <p v-if="fullscreen" @click="toggleFullscreen">
-            close fullscreen
-          </p>
+          <div class="icon-Row">
+            <div
+              class="icon icon-Expand"
+              @click="toggleFullscreen"
+              v-html="require('~/assets/icons/expand.svg?include')"
+            />
+            <div
+              class="icon icon-Contract"
+              @click="clickCenterProject"
+              v-html="require('~/assets/icons/contract.svg?include')"
+            />
+          </div>
         </transition>
       </div>
+
+      <!-- if fullscreen -->
+      <div
+        v-if="$route.name === 'projects-slug' && fullscreen"
+        class="controls-Row"
+        @click="toggleFullscreen"
+      >
+        <!-- <transition name="navControls">
+          <div
+            class="icon icon-Contract"
+            @click="toggleFullscreen"
+            v-html="require('~/assets/icons/contract.svg?include')"
+          />
+        </transition> -->
+      </div>
     </div>
+
     <!-- NEXT -->
     <div
       :data-page="$route.name"
       :data-fullscreen="fullscreen"
       class="section-NavViewer_Nav section-NavViewer_Next"
+      @click="clickPrevProject"
     >
-      <div class="controls-Row">
+      <!-- <div class="controls-Row">
         <transition name="navControls">
-          <p v-if="$route.name === 'index'" @click="clickPrevProject"></p>
+          <div
+            v-if="$route.name === 'index'"
+            class="icon icon-Right"
+            @click="clickPrevProject"
+            v-html="require('~/assets/icons/close.svg?include')"
+          />
         </transition>
-      </div>
+      </div> -->
     </div>
   </section>
 </template>
@@ -144,6 +172,7 @@ export default {
       }
     },
     toggleFullscreen() {
+      console.log("TOGGLE FULLSCREEN", this.fullscreen)
       this.fullscreen = !this.fullscreen
       document.documentElement.scrollIntoView({ behavior: "smooth" })
       this.animateProjectFullscreen()
@@ -187,6 +216,7 @@ export default {
       }
     },
     clickCenterProject() {
+      console.log("CENTER PROJECT")
       var array = document.querySelectorAll(".project")
       if (this.$route.name === "index") {
         this.animateProjectOpen()
@@ -734,6 +764,21 @@ export default {
 </script>
 
 <style lang="sass">
+.controls-Row
+  position: absolute
+  display: flex
+  flex-direction: row
+  justify-content: flex-end
+  align-items: flex-end
+  left: 0
+  right: 0
+  width: 100%
+  height: 100%
+  z-index: +1
+  color: white
+  .icon
+    cursor: pointer
+
 .section
   &-NavViewer
     position: relative
@@ -758,7 +803,6 @@ export default {
       p
         font-size: 1.25rem
         line-height: 1.25em
-        font-family: 'Presicav', sans-serif
         text-transform: uppercase
         margin-bottom: 1vh
         @media screen and ( max-width: $breakpoint-mobile)
@@ -809,7 +853,7 @@ export default {
 
 .project
   position: absolute
-  background: grey
+  background: green
   height: 33.3333vh
   cursor: pointer
   overflow: hidden
@@ -825,10 +869,6 @@ export default {
     @media (min-aspect-ratio: 1477/776)
       height: 1000%
       width: 100%
-  &[data-project="0"], &[data-project="1"], &[data-project="3"], &[data-project="4"]
-    filter: grayscale(1)
-  &[data-project="2"]
-    filter: grayscale(0)
   &[data-page="projects-slug"][data-project="2"]
     .controls-Row_Fullscreen
       opacity: 1

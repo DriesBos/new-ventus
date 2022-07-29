@@ -152,10 +152,15 @@ header
   left: 0
   right: 0
   bottom: 0
-  p
-    font-size: 1.25rem
-    padding: 1em
+  .icon
     cursor: pointer
+  .icon-Row
+    display: flex
+    padding: 30px
+    & > div
+      margin-right: 60px
+      &:last-child
+        margin-right: 0
 
 // Important since overriding interactions
 .desktop

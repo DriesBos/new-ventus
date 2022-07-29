@@ -1,6 +1,6 @@
 <template>
   <div v-editable="story.content" class="page page-Project_Slug">
-    <div class="section-NavViewer_Title">
+    <!-- <div class="section-NavViewer_Title">
       <template v-if="story.tag_list">
         <div v-for="tag in story.tag_list" :id="tag" :key="tag">
           <p class="fullscreenEnabled">{{ tag }}</p>
@@ -8,13 +8,13 @@
       </template>
       <p v-else class="fullscreenEnabled">Project</p>
       <h1 class="fullscreenEnabled">{{ story.content.title }}</h1>
-    </div>
-    <div class="page-Project_ScrollDown fullscreenEnabled" @click="scrollDown">
+    </div> -->
+    <!-- <div class="page-Project_ScrollDown fullscreenEnabled" @click="scrollDown">
       <div
         class="icon icon-Down"
-        v-html="require('~/assets/icons/arrow.svg?include')"
+        v-html="require('~/assets/icons/close.svg?include')"
       />
-    </div>
+    </div> -->
     <component
       :is="blok.component | dashify"
       v-for="blok in story.content.body"
