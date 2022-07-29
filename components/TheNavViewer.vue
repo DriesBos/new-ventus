@@ -785,8 +785,11 @@ export default {
     width: 100%
     overflow: hidden
     z-index: $slider
-    background-color: white
+    background-color: transparent
     transition: background-color .33s ease-in
+    &.fullscreen
+      background-color: black
+
     &_Title
       position: absolute
       left: 1rem
@@ -853,7 +856,6 @@ export default {
 
 .project
   position: absolute
-  background: green
   height: 33.3333vh
   cursor: pointer
   overflow: hidden

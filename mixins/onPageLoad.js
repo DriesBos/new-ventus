@@ -23,19 +23,15 @@ export default {
   },
   methods: {
     changeBackground() {
-      var viewer = document.querySelector(".section-NavViewer")
       if (this.$route.name === "index") {
         document.body.style.backgroundColor = "white"
-        viewer.style.backgroundColor = "white"
       } else if (
         this.$route.name == "projects" ||
         this.$route.name == "projects-slug"
       ) {
-        document.body.style.backgroundColor = "hsl(0, 0%, 0%)"
-        viewer.style.backgroundColor = "rgba(0,0,0,0)"
+        document.body.style.backgroundColor = "grey"
       } else {
-        document.body.style.backgroundColor = "hsl(0, 0%, 0%)"
-        viewer.style.backgroundColor = "rgba(0,0,0,0)"
+        document.body.style.backgroundColor = "black"
       }
     },
     scrollSlow() {
