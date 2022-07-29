@@ -18,6 +18,54 @@ main
   position: relative
   height: 100%
 
+.cursor
+  position: fixed
+  width: 1.5em
+  height: 1.5em
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  border-radius: 100px
+  background: white
+  pointer-events: none
+  transition: width $transition-cursor, height $transition-cursor
+  will-change: width, height
+  z-index: 999
+  mix-blend-mode: difference
+  & .icon-Prev, & .icon-Next, & .icon-Open, & .icon-Close
+    display: none
+  &.cursor-Prev
+    background: none
+    width: auto
+    .icon-Prev
+      display: block
+      height: 3.5em
+  &.cursor-Next
+    background: none
+    width: auto
+    .icon-Next
+      display: block
+      height: 3.5em
+  &.cursor-Open
+    background: none
+    width: auto
+    height: auto
+    .icon-Open
+      display: block
+      height: 3.5em
+  &.cursor-Close
+    background: none
+    width: auto
+    height: auto
+    .icon-Close
+      display: block
+      height: 3.5em
+  &.cursor-Active
+    width: 3.5em
+    height: 3.5em
+  @media ( hover: none )
+    display: none
+    
 iframe
   background: $bg-project
   background-color: $bg-project

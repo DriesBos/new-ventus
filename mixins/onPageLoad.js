@@ -1,5 +1,7 @@
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import JQuery from "jquery"
+let $ = JQuery
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -15,13 +17,92 @@ export default {
     }
   },
   mounted() {
+    this.customCursor()
     this.changeBackground()
-    // this.rotateElement()
-    // this.scrollSlow()
-    // this.scrollFast()
-    // this.scrollHorizontal()
+    $(".cursor-Active").on("mouseenter", this.changeCursor)
+    $(".cursor-Prev").on("mouseenter", this.changeCursorToPrev)
+    $(".cursor-Next").on("mouseenter", this.changeCursorToNext)
+    $(".cursor-Open").on("mouseenter", this.changeCursorToOpen)
+    $(".cursor-Close").on("mouseenter", this.changeCursorToClose)
+    $(".cursor-Active").on("mouseleave", this.removeCursor)
+    $(".cursor-Prev").on("mouseleave", this.removeCursor)
+    $(".cursor-Next").on("mouseleave", this.removeCursor)
+    $(".cursor-Open").on("mouseleave", this.removeCursor)
+    $(".cursor-Close").on("mouseleave", this.removeCursor)
+  },
+  destroyed() {
+    this.customCursor()
+    this.changeBackground()
+    $(".cursor-Active").off("mouseenter", this.changeCursor)
+    $(".cursor-Prev").off("mouseenter", this.changeCursorToPrev)
+    $(".cursor-Next").off("mouseenter", this.changeCursorToNext)
+    $(".cursor-Next").off("mouseenter", this.changeCursorToOpen)
+    $(".cursor-Next").off("mouseenter", this.changeCursorToClose)
+    $(".cursor-Active").off("mouseleave", this.removeCursor)
+    $(".cursor-Prev").off("mouseleave", this.removeCursor)
+    $(".cursor-Next").off("mouseleave", this.removeCursor)
+    $(".cursor-Open").off("mouseleave", this.removeCursor)
+    $(".cursor-Close").off("mouseleave", this.removeCursor)
   },
   methods: {
+    customCursor() {
+      let $cursor = $(".cursor")
+      function moveCursor(e) {
+        gsap.to($cursor, 0, {
+          left: e.clientX,
+          top: e.clientY
+        })
+      }
+      $(window).on("mousemove", moveCursor)
+    },
+    changeCursor() {
+      let $cursor = $(".cursor")
+      $cursor.addClass("cursor-Active")
+      $cursor.removeClass("cursor-Prev")
+      $cursor.removeClass("cursor-Next")
+      $cursor.removeClass("cursor-Open")
+      $cursor.removeClass("cursor-Close")
+    },
+    changeCursorToPrev() {
+      let $cursor = $(".cursor")
+      $cursor.addClass("cursor-Prev")
+      $cursor.removeClass("cursor-Active")
+      $cursor.removeClass("cursor-Next")
+      $cursor.removeClass("cursor-Open")
+      $cursor.removeClass("cursor-Close")
+    },
+    changeCursorToNext() {
+      let $cursor = $(".cursor")
+      $cursor.addClass("cursor-Next")
+      $cursor.removeClass("cursor-Active")
+      $cursor.removeClass("cursor-Prev")
+      $cursor.removeClass("cursor-Open")
+      $cursor.removeClass("cursor-Close")
+    },
+    changeCursorToOpen() {
+      let $cursor = $(".cursor")
+      $cursor.addClass("cursor-Open")
+      $cursor.removeClass("cursor-Active")
+      $cursor.removeClass("cursor-Prev")
+      $cursor.removeClass("cursor-Next")
+      $cursor.removeClass("cursor-Close")
+    },
+    changeCursorToClose() {
+      let $cursor = $(".cursor")
+      $cursor.addClass("cursor-Close")
+      $cursor.removeClass("cursor-Active")
+      $cursor.removeClass("cursor-Prev")
+      $cursor.removeClass("cursor-Next")
+      $cursor.removeClass("cursor-Open")
+    },
+    removeCursor() {
+      let $cursor = $(".cursor")
+      $cursor.removeClass("cursor-Active")
+      $cursor.removeClass("cursor-Prev")
+      $cursor.removeClass("cursor-Next")
+      $cursor.removeClass("cursor-Open")
+      $cursor.removeClass("cursor-Close")
+    },
     changeBackground() {
       if (this.$route.name === "index") {
         document.body.style.backgroundColor = "white"
@@ -29,7 +110,7 @@ export default {
         this.$route.name == "projects" ||
         this.$route.name == "projects-slug"
       ) {
-        document.body.style.backgroundColor = "grey"
+        document.body.style.backgroundColor = "black"
       } else {
         document.body.style.backgroundColor = "black"
       }

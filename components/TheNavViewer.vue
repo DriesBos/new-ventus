@@ -25,7 +25,7 @@
     <div
       :data-page="$route.name"
       :data-fullscreen="fullscreen"
-      class="section-NavViewer_Nav section-NavViewer_Prev"
+      class="section-NavViewer_Nav section-NavViewer_Prev cursor-Prev"
       @click="clickNextProject"
     >
       <!-- <div class="controls-Row">
@@ -49,26 +49,26 @@
       <!-- if index -->
       <div
         v-if="$route.name === 'index'"
-        class="controls-Row"
+        class="controls-Row cursor-Open"
         @click="clickCenterProject"
       ></div>
 
       <!-- if project -->
       <div
         v-if="$route.name === 'projects-slug' && !fullscreen"
-        class="controls-Row"
+        class="controls-Row cursor-Close"
       >
         <transition name="navControls">
           <div class="icon-Row">
             <div
-              class="icon icon-Expand"
-              @click="toggleFullscreen"
-              v-html="require('~/assets/icons/expand.svg?include')"
-            />
-            <div
-              class="icon icon-Contract"
+              class="icon icon-Contract cursor-Close"
               @click="clickCenterProject"
               v-html="require('~/assets/icons/contract.svg?include')"
+            />
+            <div
+              class="icon icon-Expand cursor-Open"
+              @click="toggleFullscreen"
+              v-html="require('~/assets/icons/expand.svg?include')"
             />
           </div>
         </transition>
@@ -77,7 +77,7 @@
       <!-- if fullscreen -->
       <div
         v-if="$route.name === 'projects-slug' && fullscreen"
-        class="controls-Row"
+        class="controls-Row cursor-Close"
         @click="toggleFullscreen"
       >
         <!-- <transition name="navControls">
@@ -94,7 +94,7 @@
     <div
       :data-page="$route.name"
       :data-fullscreen="fullscreen"
-      class="section-NavViewer_Nav section-NavViewer_Next"
+      class="section-NavViewer_Nav section-NavViewer_Next cursor-Next"
       @click="clickPrevProject"
     >
       <!-- <div class="controls-Row">
@@ -776,8 +776,10 @@ export default {
   height: 100%
   z-index: +1
   color: white
-  .icon
-    cursor: pointer
+  .icon-Row
+    pointer-events: none
+    .icon
+      pointer-events: auto
 
 .section
   &-NavViewer
