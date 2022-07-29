@@ -1,24 +1,15 @@
 @font-face
-  font-family: 'GT America Regular'
-  src: url('~assets/fonts/GTAmerica-Regular.woff') format('')
-  font-weight: normal
-  font-style: normal
-
-@font-face
-  font-family: 'GT America Regular'
-  src: url('~assets/fonts/GTAmerica-Bold.woff') format('woff')
-  font-weight: bold
-  font-style: normal
-
-@font-face
-  font-family: 'Presicav'
-  src: url('~assets/fonts/PresicavRg-Regular.woff2') format('woff2')
+  font-family: 'Lausanne'
+  src: url('~assets/fonts/lausanne-300.woff2') format('woff2')
   font-weight: normal
   font-style: normal
 
 // https://www.madebymike.com.au/writing/fluid-type-calc-examples/
 html
   font-size: 18px
+
+body
+  font-family: 'Lausanne', sans-serif
 
 @media screen and (min-width: 800px)
   html
@@ -44,19 +35,13 @@ h1, h2, h3, p, a
   hyphens: none
 
 li, h1, h2, h3, h4, h5, blockquote, p, a, a:link, a:visited, a:hover, a:active, span, input, button
-  font-family: 'GT America Regular', sans-serif
   line-height: 1.5
   font-style: normal
   font-weight: normal
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
 
-h1, h2, h3, h4, h5
-  font-family: 'Presicav', sans serif
-
 .markdown
-  p, h1, h2, h3, h4, h5, blockquote, a, a:link, a:visited, a:hover, a:active, strong, em, i
-    font-family: "Times New Roman", serif
   p
     font-size: $type-size-p
     line-height: $lineheight-p

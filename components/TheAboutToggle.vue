@@ -56,7 +56,6 @@ export default {
       color: white
       font-size: 1.25rem
       line-height: 1.33em
-      font-family: 'Presicav', sans-serif
       text-transform: uppercase
       text-decoration: none
       text-align: right

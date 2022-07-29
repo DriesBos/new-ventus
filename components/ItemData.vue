@@ -35,7 +35,6 @@ export default {
         margin-bottom: 0
         white-space: normal
         p, h1, h2, h3, h4, h5, a
-          font-family: 'GT America Regular', sans-serif
           font-size: $type-size-data
           line-height: $lineheight-data
         a
