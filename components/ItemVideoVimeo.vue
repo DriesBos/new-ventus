@@ -1,6 +1,6 @@
 <template>
   <!-- prettier-ignore -->
-  <div class="player-Container" :data-ratio="blok.aspect_ratio">
+  <div class="player-Container vimeo" :data-ratio="blok.aspect_ratio">
     <iframe
       :src="'https://player.vimeo.com/video/' + blok.video_id + '?loop=1&transparent=1&autoplay=1&autopause=0&muted=' + muted"
       frameborder="0"
@@ -26,9 +26,6 @@ export default {
     $route() {
       this.soundOff()
     }
-  },
-  mounted() {
-    // console.log("VIDEO ITEM VIMEO", this.blok)
   },
   methods: {
     soundOff() {

@@ -1,21 +1,23 @@
 <template>
   <!-- prettier-ignore -->
-  <iframe
-    id="mediaPlayer"
-    allow="autoplay"
-    type="text/html"
-    frameborder="0"
-    :src="'https://www.youtube.com/embed/' + videoid + '?autoplay=' + autoplay + '&loop=1'"
-    :title="title"
-  />
+  <div class="player-Container youtube" :data-ratio="blok.aspect_ratio">
+    <iframe
+      id="mediaPlayer"
+      :src="'https://www.youtube.com/embed/' + blok.video_id + '?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&mute=1'"
+      frameborder="0"
+      allow="autoplay"
+      type="text/html"
+    />
+  </div>
 </template>
 
 <script>
 export default {
   props: {
-    videoid: String,
-    autoplay: String,
-    title: String
+    blok: Object
+  },
+  mounted() {
+    console.log("VIDEO ITEM YOUTUBE", this.blok)
   }
 }
 </script>
