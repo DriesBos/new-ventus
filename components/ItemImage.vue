@@ -1,10 +1,14 @@
 <template>
+
   <section v-editable="blok" class="item item-Image">
+
     <div
       class="item_Container item-Image_Container"
       :class="[blok.size, blok.alignment]"
     >
+
       <div class="item_Single item-Image_Single">
+
         <img
           v-lazy="`${transformImage(blok.image.filename, '1440x0')}`"
           :data-srcset="
@@ -17,39 +21,25 @@
           class="lazy"
           :alt="blok.image.name"
         />
+
       </div>
+
     </div>
+
   </section>
+
 </template>
 
 <script>
-export default {
-  props: {
-    blok: Object
-  },
-  mounted() {
-    console.log("[ItemImage] Full blok:", this.blok)
-    console.log("[ItemImage] Image object:", this.blok?.image)
-    console.log("[ItemImage] Image filename:", this.blok?.image?.filename)
-  },
-  methods: {
-    transformImage(image, option) {
-      if (!image) return ""
-      if (!option) return ""
-      let imageService = "//img2.storyblok.com/"
-      let pathOne = image.replace("https://a.storyblok.com", "")
-      let pathTwo = pathOne.replace("//a.storyblok.com", "")
-      return imageService + option + pathTwo
-    }
-  }
-}
+ export default { props: { blok: Object }, mounted() { console.log("[ItemImage] Full
+blok:", this.blok) console.log("[ItemImage] Image object:", this.blok?.image) console.log("[ItemImage]
+Image filename:", this.blok?.image?.filename) }, methods: { transformImage(image,
+option) { if (!image) return "" if (!option) return "" let imageService = "//img2.storyblok.com/"
+let pathOne = image.replace("https://a.storyblok.com", "") let pathTwo = pathOne.replace("//a.storyblok.com",
+"") return imageService + option + pathTwo } } }
 </script>
 
 <style lang="sass" scoped>
-.item-Image
-  width: 100%
-  img
-    width: 100%
-    max-width: 100%
-    height: auto
+ .item-Image width: 100% img width: 100% max-width: 100% height: auto
 </style>
+
