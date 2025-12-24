@@ -1,5 +1,4 @@
-const axios = require("axios")
-require("dotenv").config()
+// Storyblok integration removed - content can be added manually
 
 // TODO: Add site title + description
 // TODO: Add 1200x630 "image.png" to static
@@ -50,8 +49,8 @@ module.exports = {
   // Loading animation
   loading: false,
 
-  // Auto import components
-  components: true,
+  // Auto import components (disabled - Storyblok components have issues)
+  components: false,
 
   // Register CSS files
   css: [
@@ -64,7 +63,7 @@ module.exports = {
 
   // Register plugins
   plugins: [
-    "~/plugins/components",
+    // "~/plugins/components", // Commented out - Storyblok components
     "~/plugins/filters",
     "~/plugins/vue-lazyload"
     // "~/plugins/vue-scrollto"
@@ -72,55 +71,12 @@ module.exports = {
 
   // Register modules
   modules: [
-    "@nuxtjs/axios",
-    // "vue-scrollto/nuxt",
-    [
-      "storyblok-nuxt",
-      {
-        accessToken:
-          process.env.NODE_ENV == "production"
-            ? process.env.PUBLICKEY
-            : process.env.PREVIEWKEY,
-        cacheProvider: "memory"
-      }
-    ]
+    "@nuxtjs/axios"
+    // "vue-scrollto/nuxt"
   ],
 
   // Generate routes
   generate: {
-    routes: function(callback) {
-      const token = process.env.PUBLICKEY
-      const version = "published"
-      let cache_version = 0
-
-      let toIgnore = ["home", "en/settings"]
-
-      // other routes that are not in Storyblok with their slug.
-      let routes = ["/"] // adds / directly
-
-      // Load space and receive latest cache version key to improve performance
-      axios
-        .get(`https://api.storyblok.com/v1/cdn/spaces/me?token=${token}`)
-        .then(space_res => {
-          // timestamp of latest publish
-          cache_version = space_res.data.space.version
-
-          // Call for all Links using the Links API: https://www.storyblok.com/docs/Delivery-Api/Links
-          axios
-            .get(
-              `https://api.storyblok.com/v1/cdn/links?token=${token}&version=${version}&cv=${cache_version}&per_page=100`
-            )
-            .then(res => {
-              Object.keys(res.data.links).forEach(key => {
-                if (!toIgnore.includes(res.data.links[key].slug)) {
-                  routes.push("/" + res.data.links[key].slug)
-                }
-              })
-
-              callback(null, routes)
-            })
-        })
-    },
     // Fallback to prevent Netlify from directing to its own error pages
     fallback: true
   },
@@ -133,7 +89,6 @@ module.exports = {
         icon: false // disables the icon module due dynamic favicon
       }
     ],
-    "@nuxtjs/dotenv",
     "@nuxtjs/style-resources",
     "@aceforth/nuxt-optimized-images"
     // [
@@ -165,7 +120,9 @@ module.exports = {
      ** You can extend webpack config here
      */
     extend(config, ctx) {
-      // Run ESLint on save
+      // Run ESLint on save (DISABLED - eslint-loader incompatible with ESLint v8)
+      // Use `npm run lint` to check for errors instead
+      /*
       if (ctx.isDev && ctx.isClient) {
         config.module.rules.push({
           enforce: "pre",
@@ -174,6 +131,7 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
+      */
       // Fixes dotenv error
       config.node = {
         fs: "empty"

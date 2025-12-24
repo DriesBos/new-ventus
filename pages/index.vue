@@ -1,53 +1,46 @@
 <template>
-  <div v-editable="story.content" class="page-Index">
-    <component
-      :is="story.content.component | dashify"
-      v-if="story.content.component"
-      :key="story.content._uid"
-      :blok="story.content"
-    ></component>
+  <div class="page-Index">
+    <!-- Storyblok integration commented out - add your content here -->
+    <div class="container">
+      <h1>NEW VENTUS</h1>
+      <p>Website is ready! Add your content here.</p>
+      <p>Navigate to the projects or other pages to add more content.</p>
+    </div>
+    <!-- 
+    <div v-editable="story.content">
+      <component
+        :is="story.content.component | dashify"
+        v-if="story.content.component"
+        :key="story.content._uid"
+        :blok="story.content"
+      ></component>
+    </div>
+    -->
   </div>
 </template>
 
 <script>
 import onPageLoad from "@/mixins/onPageLoad"
-import storyblokLivePreview from "@/mixins/storyblokLivePreview"
+// import storyblokLivePreview from "@/mixins/storyblokLivePreview"
 
 export default {
-  mixins: [onPageLoad, storyblokLivePreview],
-  asyncData(context) {
-    return context.app.$storyapi
-      .get("cdn/stories/home", {
-        version: process.env.NODE_ENV == "production" ? "published" : "draft"
-      })
-      .then(res => {
-        return res.data
-      })
-      .catch(res => {
-        if (!res.response) {
-          console.error(res)
-          context.error({
-            statusCode: 404,
-            message: "Failed to receive content form api"
-          })
-        } else {
-          console.error(res.response.data)
-          context.error({
-            statusCode: res.response.status,
-            message: res.response.data
-          })
-        }
-      })
-  },
+  mixins: [onPageLoad],
   data() {
     return {
-      story: { content: {} }
+      story: { content: {}, name: "Home" }
     }
   },
   head() {
     return {
-      title: this.story.name + " — NEW VENTUS"
+      title: "NEW VENTUS"
     }
   }
 }
 </script>
+
+<style lang="sass" scoped>
+.container
+  padding: 2rem
+  max-width: 1200px
+  margin: 0 auto
+</style>

@@ -1,3 +1,4 @@
+// Storyblok integration commented out
 export const state = () => ({
   cacheVersion: ""
 })
@@ -8,6 +9,8 @@ export const mutations = {
   }
 }
 
+// Storyblok actions commented out
+/*
 export const actions = {
   loadCacheVersion({ commit }) {
     return this.$storyapi.get(`cdn/spaces/me`).then(res => {
@@ -15,9 +18,12 @@ export const actions = {
     })
   }
 }
+*/
 
 export default {
   actions: {
+    // Storyblok nuxtServerInit commented out - add manual data initialization here if needed
+    /*
     async nuxtServerInit({ commit }, { app }) {
       let getProjects = await app.$storyapi.get("cdn/stories", {
         version: process.env.NODE_ENV === "production" ? "published" : "draft",
@@ -49,5 +55,6 @@ export default {
       })
       commit("about/update", about)
     }
+    */
   }
 }
