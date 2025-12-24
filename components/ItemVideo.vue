@@ -28,7 +28,8 @@ export default {
     blok: Object
   },
   mounted() {
-    console.log("VIDEO ITEM", this.blok)
+    console.log("[ItemVideo] Full blok:", this.blok)
+    console.log("[ItemVideo] Video ID:", this.blok?.video_id)
   }
 }
 </script>

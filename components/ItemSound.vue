@@ -14,15 +14,17 @@
             class="item-AudioPlayer_Button"
             @click="pressAudio()"
           >
-            <div
+            <img
               v-if="audio === 'stopped' || audio === 'paused'"
               class="icon icon-Audio"
-              v-html="require('~/assets/images/icon-play.svg?include')"
+              src="~/assets/images/icon-play.svg"
+              alt="Play"
             />
-            <div
+            <img
               v-else
               class="icon icon-Audio"
-              v-html="require('~/assets/images/icon-stop.svg?include')"
+              src="~/assets/images/icon-stop.svg"
+              alt="Stop"
             />
           </div>
           <p @click="pressAudio()">
@@ -53,7 +55,8 @@ export default {
     }
   },
   mounted() {
-    console.log(this.blok, "SOUND ITEM")
+    console.log("[ItemSound] Full blok:", this.blok)
+    console.log("[ItemSound] Audio file:", this.blok?.file)
     // window.addEventListener("scroll", this.onScroll)
     // this.stickyWhenVisible()
   },

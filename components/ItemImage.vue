@@ -28,7 +28,9 @@ export default {
     blok: Object
   },
   mounted() {
-    // console.log("BLOK IMAGE ITEM", this.blok)
+    console.log("[ItemImage] Full blok:", this.blok)
+    console.log("[ItemImage] Image object:", this.blok?.image)
+    console.log("[ItemImage] Image filename:", this.blok?.image?.filename)
   },
   methods: {
     transformImage(image, option) {
@@ -43,12 +45,11 @@ export default {
 }
 </script>
 
-<style lang="sass">
-.item
-  &-Image
+<style lang="sass" scoped>
+.item-Image
+  width: 100%
+  img
     width: 100%
-    img
-      width: 100%
-      max-width: 100%
-      height: auto
+    max-width: 100%
+    height: auto
 </style>

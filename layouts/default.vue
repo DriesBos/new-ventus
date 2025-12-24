@@ -1,24 +1,19 @@
 <template>
-  <!-- Change if needed -->
   <main lang="en-US" translate="no">
-    <!-- Storyblok-dependent components commented out -->
-    <!-- <LazyTheNavViewer /> -->
+    <TheNavViewer />
     <nuxt />
-    <!-- <LazyTheAbout :about-prop="aboutState" /> -->
-    <!-- <LazyTheAboutToggle :about-prop="aboutState" @clicked="toggleAbout" /> -->
-    <!-- 
-    <div class="cursor">
-      <img class="icon-Prev" src="~/assets/icons/arrow-left.svg" />
-      <img class="icon-Next" src="~/assets/icons/arrow-right.svg" />
-      <img class="icon-Open" src="~/assets/icons/expand.svg" />
-      <img class="icon-Close" src="~/assets/icons/contract.svg" />
-    </div>
-    -->
+    <!-- <TheAbout :about-prop="aboutState" /> -->
+    <!-- <TheAboutToggle :about-prop="aboutState" @clicked="toggleAbout" /> -->
   </main>
 </template>
 
 <script>
+import TheNavViewer from "~/components/TheNavViewer.vue"
+
 export default {
+  components: {
+    TheNavViewer
+  },
   data() {
     return {
       aboutState: false

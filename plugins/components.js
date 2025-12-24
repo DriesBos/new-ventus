@@ -1,5 +1,3 @@
-// Storyblok components commented out - these can be re-enabled when Storyblok is integrated
-/*
 import Vue from "vue"
 
 // PAGES
@@ -31,4 +29,3 @@ Vue.component("blok-item-video", ItemVideo)
 Vue.component("blok-item-video-vimeo", ItemVideoVimeo)
 Vue.component("blok-item-video-youtube", ItemVideoYoutube)
 // Vue.component("blok-item-videoplayer", ItemVideoplayer)
-*/

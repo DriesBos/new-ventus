@@ -1,26 +1,61 @@
 <template>
-  <div class="page page-Project_Slug">
-    <!-- Storyblok integration commented out - add your project content here -->
-    <div class="container">
-      <h1>Project: {{ $route.params.slug }}</h1>
-      <p>Add your project content here.</p>
-    </div>
+  <div v-editable="story.content" class="page page-Project_Slug">
+    <component
+      :is="blok.component | dashify"
+      v-for="blok in story.content.body"
+      :key="blok._uid"
+      :blok="blok"
+    ></component>
   </div>
 </template>
 
 <script>
 import onPageLoad from "@/mixins/onPageLoad"
+import storyblokLivePreview from "@/mixins/storyblokLivePreview"
 
 export default {
-  mixins: [onPageLoad],
+  mixins: [onPageLoad, storyblokLivePreview],
+  asyncData(context) {
+    let endpoint = "cdn/stories/projects/" + context.params.slug
+    return context.app.$storyapi
+      .get(endpoint, {
+        version: process.env.NODE_ENV == "production" ? "published" : "draft"
+      })
+      .then(res => {
+        console.log("[PROJECT] Full Storyblok response:", res.data)
+        console.log("[PROJECT] Story:", res.data.story)
+        console.log("[PROJECT] Story content:", res.data.story?.content)
+        console.log("[PROJECT] Story body:", res.data.story?.content?.body)
+        return res.data
+      })
+      .catch(res => {
+        if (!res.response) {
+          console.error("[PROJECT] Error (no response):", res)
+          context.error({
+            statusCode: 404,
+            message: "Failed to receive content from api"
+          })
+        } else {
+          console.error("[PROJECT] Error response:", res.response.data)
+          context.error({
+            statusCode: res.response.status,
+            message: res.response.data
+          })
+        }
+      })
+  },
   data() {
     return {
-      story: { content: {}, name: this.$route.params.slug }
+      story: { content: {} }
     }
+  },
+  mounted() {
+    console.log("[PROJECT] Mounted with story:", this.story)
+    console.log("[PROJECT] Content body:", this.story.content?.body)
   },
   head() {
     return {
-      title: (this.$route.params.slug || "Project") + " — NEW VENTUS"
+      title: this.story.name + " — NEW VENTUS"
     }
   },
   methods: {
@@ -34,13 +69,6 @@ export default {
   }
 }
 </script>
-
-<style lang="sass" scoped>
-.container
-  padding: 2rem
-  max-width: 1200px
-  margin: 0 auto
-</style>
 
 <style lang="sass">
 .page-Project_ScrollDown

@@ -1,29 +1,41 @@
 <template>
-  <div class="page-Slug">
-    <!-- Storyblok integration commented out - add your content here -->
-    <div class="container">
-      <h1>{{ $route.params.slug }}</h1>
-      <p>Add your custom content for this page here.</p>
-    </div>
+  <div v-editable="story.content" class="page-Slug">
+    <component
+      :is="story.content.component | dashify"
+      v-if="story.content.component"
+      :key="story.content._uid"
+      :blok="story.content"
+    ></component>
   </div>
 </template>
 
 <script>
+import storyblokLivePreview from "@/mixins/storyblokLivePreview"
+
 export default {
+  mixins: [storyblokLivePreview],
+  asyncData(context) {
+    return context.app.$storyapi
+      .get(`cdn/stories/${context.params.slug}`, {
+        version: process.env.NODE_ENV == "production" ? "published" : "draft"
+      })
+      .then(res => {
+        return res.data
+      })
+      .catch(res => {
+        context.error({
+          statusCode: res.response.status,
+          message: res.response.data
+        })
+      })
+  },
   data() {
-    return { story: { content: {}, name: this.$route.params.slug } }
+    return { story: { content: {} } }
   },
   head() {
     return {
-      title: (this.$route.params.slug || "Page") + " — NEW VENTUS"
+      title: this.story.name + " — NEW VENTUS"
     }
   }
 }
 </script>
-
-<style lang="sass" scoped>
-.container
-  padding: 2rem
-  max-width: 1200px
-  margin: 0 auto
-</style>
